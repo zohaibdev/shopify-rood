@@ -1,0 +1,278 @@
+{% schema %}
+{
+  "name": "Hero Waitlist",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image_mb",
+      "label": "Background Image mobile"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_logo_image",
+      "label": "Use logo image?",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "Logo Image",
+      "info": "Upload logo if using image mode"
+    },
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo Text",
+      "default": "Rood"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "CAN’T-BE-STUFFED SKINCARE."
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Sub Text",
+      "default": "Join the waitlist for a surprise. Or don’t, we’re not your Mum."
+    },
+    {
+      "type": "text",
+      "id": "first_name_placeholder",
+      "label": "First Name Placeholder",
+      "default": "FIRST NAME"
+    },
+    {
+      "type": "text",
+      "id": "last_name_placeholder",
+      "label": "Last Name Placeholder",
+      "default": "LAST NAME"
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email Placeholder",
+      "default": "EMAIL ADDRESS"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "I WANT FIRST DIBS →"
+    },
+    {
+      "type": "textarea",
+      "id": "footer_text",
+      "label": "Footer Text",
+      "default": "Rood™ formulates face gear for fellas who want their mug looking better, without the piss-take of a whole 12 step circus routine."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Waitlist"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+.hero-waitlist {
+  height: 100vh;
+  width: 100%;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  row-gap: 1rem;
+}
+.hero-waitlist img.hero-logo-img {
+    width: 560px;
+    height: 180px;
+}
+.hero-tagline {
+    font-family: Maison Mono;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 30px;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-align: center;
+    margin: 2rem 0;
+}
+.hero-subtext {
+    font-family: Inter;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-align: center;
+}
+.hero-logo-text {
+  font-size: 90px;
+  font-weight: 700;
+  font-family: "Brush Script MT", cursive;
+  margin-bottom: 10px;
+}
+
+.hero-form-row {
+  display: flex;
+  gap: 10px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.hero-form-row input,
+.hero-input-full input {
+  flex: 1;
+  padding: 12px 15px;
+  border: none;
+  border-radius: 25px;
+  background: rgba(255,255,255,0.3);
+  color: white;
+}
+
+.hero-form-row input::placeholder,
+.hero-input-full input::placeholder {
+  color: white;
+  opacity: 0.8;
+}
+
+.hero-input-full {
+  max-width: 500px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.hero-btn {
+  margin-top: 15px;
+  padding: 12px 25px;
+  background: #f8d533;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.hero-footer {
+    max-width: 550px;
+  position: absolute;
+    bottom: 20px;
+    opacity: 0.8;
+    width: 100%;
+    font-family: Inter;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-align: center;
+}
+.back-overlay {
+    width: 100%;
+    height: 100%;
+    background-color: #00000066;
+    position: absolute;
+    z-index: -1;
+}
+
+@media screen and (max-width: 769px){
+    .hero-waitlist img.hero-logo-img {
+        width: 260px !important;
+        height: 80px !important;
+    }
+    .hero-tagline {
+    font-size: 20px !important;
+    margin: 0rem 0 !important;
+    line-height: 1.5;
+    }
+    .klaviyo-form.klaviyo-form.klaviyo-form {
+    text-align: left;
+    }
+    .hero-subtext {
+        font-size: 12px;
+        max-width: 170px;
+        line-height: 1.5;
+    }
+    .hero-waitlist {
+     padding: 0 40px;
+    }
+        
+}
+@media screen and (max-width: 480px){
+     .bg_image_desk {
+     display: none;
+    }
+    .bg_image_mb {
+    display: flex !important;
+    }
+    .bg_image_mb.hero-waitlist {
+    background-size: cover;
+    background-position: top;
+    row-gap: 1rem;
+    background-repeat: no-repeat;
+    height: 94vh;
+}
+.klaviyo-form.klaviyo-form.klaviyo-form {
+   
+        display: flex;
+    }
+    .hero-footer {
+    padding: 0 1rem;
+    
+}
+
+.hero-tagline {
+        max-width: 300px;
+    }
+}
+</style>
+
+<div class="hero-waitlist bg_image_desk" 
+     style="background-image:url({{ section.settings.bg_image | image_url }});">
+<div class="back-overlay"></div>
+  {% if section.settings.use_logo_image and section.settings.logo_image != blank %}
+    <img src="{{ section.settings.logo_image | image_url }}"  class="hero-logo-img">
+  {% else %}
+    <div class="hero-logo-text">{{ section.settings.logo_text }}</div>
+  {% endif %}
+
+  <div class="hero-tagline">{{ section.settings.tagline }}</div>
+  <div class="hero-subtext">{{ section.settings.subtext }}</div>
+ 
+<div class="klaviyo-form-TPR62C"></div>
+
+  <div class="hero-footer">
+    {{ section.settings.footer_text }}
+  </div>
+</div>
+<div class="hero-waitlist bg_image_mb" 
+     style="background-image:url({{ section.settings.bg_image_mb | image_url }}); display: none;" >
+<div class="back-overlay"></div>
+  {% if section.settings.use_logo_image and section.settings.logo_image != blank %}
+    <img src="{{ section.settings.logo_image | image_url }}"  class="hero-logo-img">
+  {% else %}
+    <div class="hero-logo-text">{{ section.settings.logo_text }}</div>
+  {% endif %}
+
+  <div class="hero-tagline">{{ section.settings.tagline }}</div>
+  <div class="hero-subtext">{{ section.settings.subtext }}</div>
+
+<div class="klaviyo-form-TPR62C"></div>
+
+  <div class="hero-footer">
+    {{ section.settings.footer_text }}
+  </div>
+</div>

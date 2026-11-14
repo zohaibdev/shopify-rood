@@ -1,0 +1,90 @@
+{%- assign image = section.settings.image -%}
+<div class="hero__wrapper{% if section.settings.dark_mode %} hero__wrapper--dark{% endif %}" style="background-image: url('{{ image | image_url: width: image.width }}');">
+    <div class="section">
+        <div class="hero__content">
+            {%- if section.settings.title -%}
+                <h1 class="hero__title">{{ section.settings.title }}</h1>
+            {%- endif -%}
+            {%- if section.settings.content -%}
+                <p class="hero__text">{{ section.settings.content }}</p>
+            {%- endif -%}
+            {%- if section.settings.button_link -%}
+                <a href="{{ section.settings.button_link }}" class="th-btn">{{ section.settings.button_text }}</a>
+            {%- endif -%}
+        </div>
+    </div>
+    <div class="hero__flag-icon">
+        {%- assign flag_icon = section.settings.flag_icon -%}
+        {{ flag_icon | image_url: width: flag_icon.width | image_tag: class: 'img-fluid', loading: 'lazy' }}
+    </div>
+
+    {%- if section.settings.video -%}
+        {{ section.settings.video | video_tag: autoplay: true, muted: true, loop: true, class: 'hero__video' }}
+    {%- endif -%}
+</div>
+
+{% schema %}
+  {
+  "name": "Hero",
+  "class": "hero",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "dark_mode",
+      "label": "Dark mode",
+      "info": "Darkens the video and shows the hero content and the header over it in white. The sticky header is unchanged.",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Background Video"
+    },
+    {
+      "type": "image_picker",
+      "id": "flag_icon",
+      "label": "Flag Icon"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "CAN’T BE STUFFED SKINCARE."
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "Content",
+      "default": "Rood™ makes formulated masks for fellas who want a better looking mug (without a 12 step routine)."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "SHOP ROOD™"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

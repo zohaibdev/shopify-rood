@@ -1,0 +1,51 @@
+{%- doc -%}
+  Renders a duo product's media. With a video set, the image stays visible until the
+  muted, looping video is actually playing, and remains as the fallback when the video
+  can't load or play.
+
+  @param {object} [image] - Product image, shown alone or as the video fallback
+  @param {object} [video] - Optional video that replaces the image once it plays
+
+  @example
+  {% render 'duo-media', image: section.settings.first_product_image, video: section.settings.first_product_video %}
+{%- enddoc -%}
+
+{%- if video != blank -%}
+  {%- liquid
+    assign fallback_image = image | default: video.preview_image
+  -%}
+  <script src="{{ 'video-fallback.js' | asset_url }}" type="module" fetchpriority="low"></script>
+  <video-fallback-component class="duo__media">
+    {%- if fallback_image != blank -%}
+      {{
+        fallback_image
+        | image_url: width: fallback_image.width
+        | image_tag: class: 'duo__media-fallback', loading: 'lazy', alt: fallback_image.alt
+      }}
+    {%- endif -%}
+    <video
+      class="duo__media-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="none"
+      aria-hidden="true"
+      ref="video"
+    >
+      {%- for source in video.sources -%}
+        <source
+          data-video-source="{{ source.url }}"
+          type="{{ source.mime_type }}"
+          ref="sources[]"
+        >
+      {%- endfor -%}
+    </video>
+  </video-fallback-component>
+{%- elsif image != blank -%}
+  {{
+    image
+    | image_url: width: image.width
+    | image_tag: class: 'add_your_class_here', loading: 'lazy'
+  }}
+{%- endif -%}

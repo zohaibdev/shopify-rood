@@ -1,0 +1,256 @@
+
+<div class="section">
+  <div class="mask-tabs__header">
+    <h2 class="mask-tabs__title">{{ section.settings.title }}</h2>
+    <p class="mask-tabs__subtitle">{{ section.settings.subtitle }}</p>
+  </div>
+
+  <div class="mask-tabs__nav">
+    <button class="mask-tabs__btn active" data-tab="sheet-mask">Sheet Mask</button>
+    <button class="mask-tabs__btn" data-tab="eye-mask">Eye Mask</button>
+  </div>
+
+  <div class="mask-tabs__content">
+    {%- comment -%} Sheet Mask Tab {%- endcomment -%}
+    <div class="mask-tabs__panel mask-tabs__panel--sheet-mask active" data-panel="sheet-mask">
+      <div
+        class="mask-tabs__video"
+        {% if section.settings.sheet_mask_video.aspect_ratio %}
+          style="--mask-tabs-video-ratio: {{ section.settings.sheet_mask_video.aspect_ratio }};"
+        {% endif %}
+      >
+        {{ section.settings.sheet_mask_video | video_tag: controls: false, autoplay: true, loop: true, muted: true }}
+      </div>
+      {%- assign sheet_pointers_left = 0 -%}
+      {%- assign sheet_pointers_right = 0 -%}
+      {%- assign pointer_index = 1 -%}
+      <div class="mask-tabs__pointers">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'sheet_mask_pointer' -%}
+            {%- assign text_align = 'left' -%}
+            {%- if block.settings.direction  == 'row-reverse' -%}
+              {%- assign text_align = 'right' -%}
+            {%- endif -%}
+            <div
+              class="mask-tabs__point mask-tabs__point-mask-{{ pointer_index }}"
+              style="--pos-x: {{ block.settings.position_x }}%; --pos-y: {{ block.settings.position_y }}%; --direction: {{ block.settings.direction }}; --text-align: {{ text_align }};"
+              {{ block.shopify_attributes }}
+            >
+              <div class="mask-pointer__star">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9.16867 9.16754L12.001 0L14.8333 9.16754H24L16.5834 14.8325L19.4157 24L12.001 18.3351L4.58434 24L7.41665 14.8325L0 9.16754H9.16867Z" fill="black"/>
+                </svg>
+              </div>
+              <div class="mask-pointer__content">
+                <h4 class="mask-pointer__title">{{ block.settings.title }}</h4>
+                <p class="mask-pointer__subtitle">{{ block.settings.subtitle }}</p>
+              </div>
+            </div>
+            {%- assign pointer_index = pointer_index | plus: 1 -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+
+    {%- comment -%} Eye Mask Tab {%- endcomment -%}
+    <div class="mask-tabs__panel mask-tabs__panel--eye-mask" data-panel="eye-mask">
+      <div
+        class="mask-tabs__video"
+        {% if section.settings.eye_mask_video.aspect_ratio %}
+          style="--mask-tabs-video-ratio: {{ section.settings.eye_mask_video.aspect_ratio }};"
+        {% endif %}
+      >
+        {{ section.settings.eye_mask_video | video_tag: controls: false, autoplay: true, loop: true, muted: true }}
+      </div>
+      {%- assign eye_pointers_left = 0 -%}
+      {%- assign eye_pointers_right = 0 -%}
+      {%- assign pointer_index = 1 -%}
+      <div class="mask-tabs__pointers">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'eye_mask_pointer' -%}
+            {%- assign text_align = 'left' -%}
+            {%- if block.settings.direction  == 'row-reverse' -%}
+              {%- assign text_align = 'right' -%}
+            {%- endif -%}
+            <div
+              class="mask-tabs__point mask-tabs__point-mask-{{ pointer_index }}"
+              style="--pos-x: {{ block.settings.position_x }}%; --pos-y: {{ block.settings.position_y }}%; --direction: {{ block.settings.direction }}; --text-align: {{ text_align }};"
+              {{ block.shopify_attributes }}
+            >
+              <div class="mask-pointer__star">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9.16867 9.16754L12.001 0L14.8333 9.16754H24L16.5834 14.8325L19.4157 24L12.001 18.3351L4.58434 24L7.41665 14.8325L0 9.16754H9.16867Z" fill="black"/>
+                </svg>
+              </div>
+              <div class="mask-pointer__content">
+                <h4 class="mask-pointer__title">{{ block.settings.title }}</h4>
+                <p class="mask-pointer__subtitle">{{ block.settings.subtitle }}</p>
+              </div>
+            </div>
+            {%- assign pointer_index = pointer_index | plus: 1 -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Mask Tabs",
+  "class": "mask-tabs",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "KOREAN-GRADE FORMULA"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "your girlfriend will lose her mind that you know this"
+    },
+    {
+      "type": "video",
+      "id": "sheet_mask_video",
+      "label": "Sheet Mask Video"
+    },
+    {
+      "type": "video",
+      "id": "eye_mask_video",
+      "label": "Eye Mask Video"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Sheet Mask Pointer",
+      "type": "sheet_mask_pointer",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Hyaluronic Acid"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle"
+        },
+        {
+          "type": "number",
+          "id": "position_x",
+          "label": "Position X"
+        },
+        {
+          "type": "number",
+          "id": "position_y",
+          "label": "Position Y"
+        },
+        {
+          "type": "radio",
+          "id": "direction",
+          "label": "Direction",
+          "options": [
+            {
+              "value": "row",
+              "label": "row"
+            },
+            {
+              "value": "row-reverse",
+              "label": "row-reverse"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Eye Mask Pointer",
+      "type": "eye_mask_pointer",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Hyaluronic Acid"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle"
+        },
+        {
+          "type": "number",
+          "id": "position_x",
+          "label": "Position X"
+        },
+        {
+          "type": "number",
+          "id": "position_y",
+          "label": "Position Y"
+        },
+        {
+          "type": "radio",
+          "id": "direction",
+          "label": "Direction",
+          "options": [
+            {
+              "value": "row",
+              "label": "row"
+            },
+            {
+              "value": "row-reverse",
+              "label": "row-reverse"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mask Tabs"
+    }
+  ]
+}
+{% endschema %}
+
+
+{% javascript %}
+  document.addEventListener('DOMContentLoaded', function () {
+    const tabBtns = document.querySelectorAll('.mask-tabs__btn');
+    const tabPanels = document.querySelectorAll('.mask-tabs__panel');
+
+    tabBtns.forEach((btn) => {
+      btn.addEventListener('click', function () {
+        const targetTab = this.getAttribute('data-tab');
+        const targetPanel = document.querySelector(`[data-panel="${targetTab}"]`);
+        const currentActive = document.querySelector('.mask-tabs__panel.active');
+
+        // Don't do anything if clicking the already active tab
+        if (targetPanel === currentActive) return;
+
+        // Remove active class from all buttons
+        tabBtns.forEach((b) => b.classList.remove('active'));
+        this.classList.add('active');
+
+        // Fade out current panel first
+        if (currentActive) {
+          currentActive.classList.add('fading-out');
+          currentActive.classList.remove('active');
+        }
+        
+        // Wait for fade out to complete, then fade in new panel
+        setTimeout(() => {
+          if (currentActive) {
+            currentActive.classList.remove('fading-out');
+          }
+          targetPanel.classList.add('active');
+        }, 400);
+      });
+    });
+  });
+{% endjavascript %}

@@ -1,0 +1,38 @@
+{% assign metafield_ns = section.settings.checklist_namespace %}
+{% assign metafield_key = section.settings.checklist_key %}
+{% assign checklist = product.metafields[metafield_ns][metafield_key] %}
+{% assign excludes_checklist_key = section.settings.excludes_checklist_key %}
+{% assign excludes_checklist = product.metafields[metafield_ns][excludes_checklist_key] %}
+
+{% if checklist != blank %}
+  <ul class="product-radio-selector__checklist">
+    {% if checklist.value and checklist.value.size > 0 %}
+      {% for item in checklist.value %}
+        <li>{{ item }}</li>
+      {% endfor %}
+    {% else %}
+      {% assign items = checklist | split: '|' %}
+      {% for item in items %}
+        {% if item != blank %}
+          <li>{{ item | strip }}</li>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  </ul>
+{% endif %}
+{% if excludes_checklist != blank %}
+  <ul class="product-radio-selector__checklist product-radio-selector__checklist--excludes">
+    {% if excludes_checklist.value and excludes_checklist.value.size > 0 %}
+      {% for item in excludes_checklist.value %}
+        <li>{{ item }}</li>
+      {% endfor %}
+    {% else %}
+      {% assign items = excludes_checklist | split: '|' %}
+      {% for item in items %}
+        {% if item != blank %}
+          <li>{{ item | strip }}</li>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  </ul>
+{% endif %}

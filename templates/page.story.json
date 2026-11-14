@@ -1,0 +1,174 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "name": "Title",
+          "settings": {
+            "custom_class": "",
+            "text": "<h1>{{ closest.page.title }}</h1>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h2",
+            "font": "var(--font-primary--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "page-content": {
+          "type": "page-content",
+          "settings": {},
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "page-content"
+      ],
+      "disabled": true,
+      "settings": {
+        "content_direction": "column",
+        "gap": 32,
+        "color_scheme": "",
+        "padding-block-start": 40,
+        "padding-block-end": 80
+      }
+    },
+    "story_binTYz": {
+      "type": "story",
+      "blocks": {
+        "images_yjzxhR": {
+          "type": "images",
+          "settings": {
+            "image": "shopify://shop_images/story-1.png",
+            "video": "shopify://files/videos/AQPinRmRwr8TSvZEVqtstG1AKPyybtTflZ4onkOrI0RYpbalfBgkh28hLbI4Kl63YYsgaiHTBKiOej1rSTFtvqbYrZChZdrzdzDcCfw.mp4"
+          }
+        },
+        "images_dEpaBx": {
+          "type": "images",
+          "settings": {
+            "image": "shopify://shop_images/story-2.png",
+            "video": "shopify://files/videos/We Bought a Car for Marketing.mp4"
+          }
+        },
+        "images_R6kKfV": {
+          "type": "images",
+          "settings": {
+            "image": "shopify://shop_images/story-3.png",
+            "video": "shopify://files/videos/IMG_0746.mp4"
+          }
+        }
+      },
+      "block_order": [
+        "images_yjzxhR",
+        "images_dEpaBx",
+        "images_R6kKfV"
+      ],
+      "name": "Story",
+      "settings": {
+        "primary_title": "It started in a bathroom.",
+        "primary_content": "<p>Ben was doing a face mask with his wife and had a simple thought: Why is none of this made for blokes?<br/><br/>Everything felt like it belonged in someone else’s routine.Soft packaging. Complicated steps. A 12-step skincare circus.<br/><br/>But here’s the reality. Men deal with acne. Men age. Men get tired eyes from long days and short nights.<br/><br/>We just don’t talk about it. And there wasn’t a brand speaking directly to us. So we built one.</p>",
+        "secondary_title": "",
+        "secondary_content": ""
+      }
+    },
+    "story_KJdbVQ": {
+      "type": "story",
+      "blocks": {
+        "images_4BUfXC": {
+          "type": "images",
+          "settings": {
+            "image": "shopify://shop_images/story-4.jpg",
+            "video": "shopify://files/videos/Box Unboxing.mp4"
+          }
+        },
+        "images_yfYEyW": {
+          "type": "images",
+          "settings": {
+            "image": "shopify://shop_images/image-12.jpg",
+            "video": "shopify://files/videos/Reyno Scent test.mp4"
+          }
+        }
+      },
+      "block_order": [
+        "images_4BUfXC",
+        "images_yfYEyW"
+      ],
+      "name": "Story",
+      "settings": {
+        "primary_title": "Why We Started Rood",
+        "primary_content": "<p>We’re not influencers who discovered skincare last year. We’re fellas who live the same life as the men we’re building this for.<br/><br/>Early mornings. Big responsibility. Long days.<br/><br/>We care about how we show up. For our families. For our work. For ourselves. But we don’t have time for 10 serums and a beauty routine that feels like homework. Rood was created to solve that.<br/><br/>Sort your mug. Move on with your day. </p>",
+        "secondary_title": "",
+        "secondary_content": ""
+      }
+    },
+    "story_tyyDXt": {
+      "type": "story",
+      "blocks": {
+        "images_mWMVzY": {
+          "type": "images",
+          "settings": {
+            "image": "shopify://shop_images/story-6.jpg",
+            "video": "shopify://files/videos/arthurs asmr.mp4"
+          }
+        },
+        "images_fMKGqV": {
+          "type": "images",
+          "settings": {
+            "image": "shopify://shop_images/story-7.jpg",
+            "video": "shopify://files/videos/Rood_CGI_sound effects.mp4"
+          }
+        },
+        "images_fGBRKh": {
+          "type": "images",
+          "settings": {
+            "image": "shopify://shop_images/story-8.jpg",
+            "video": "shopify://files/videos/Reyno to BTS shott.mp4"
+          }
+        }
+      },
+      "block_order": [
+        "images_mWMVzY",
+        "images_fMKGqV",
+        "images_fGBRKh"
+      ],
+      "name": "Story",
+      "settings": {
+        "primary_title": "The Real Problem",
+        "primary_content": "<p>There’s still a quiet stigma around men caring about their skin As if looking sharp somehow makes you less masculine.<br/><br/>We think that’s outdated. Modern masculinity is ownership, discipline and confidence.<br/><br/>Looking better isn’t vanity, it’s preparation.<br/><br/>If you train your body. If you sharpen your mind. Why ignore your skin?</p>",
+        "secondary_title": "Where This Is Going",
+        "secondary_content": "<p>Rood isn’t just products. It’s a ritual. A reset before you step back into the arena. We’re building more than skincare. We’re building culture.<br/><br/>A brand for men who get stuff done. Men who take ownership.  Men who want to look sharp without overthinking it.<br/><br/>This is about looking better. So you can show up better.<br/><br/>- Adam, Ben & Jordy</p>"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "story_binTYz",
+    "story_KJdbVQ",
+    "story_tyyDXt"
+  ]
+}

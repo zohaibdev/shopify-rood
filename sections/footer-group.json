@@ -1,0 +1,64 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "cs_footer_Pf6hGV": {
+      "type": "cs-footer",
+      "blocks": {
+        "social_links_EmEyUX": {
+          "type": "social-links",
+          "name": "t:names.social_media_links",
+          "settings": {
+            "facebook_url": "https://www.facebook.com/rood.skin",
+            "instagram_url": "https://www.instagram.com/rood.skin/",
+            "youtube_url": "",
+            "tiktok_url": "https://www.tiktok.com/@rood.skin",
+            "twitter_url": "",
+            "threads_url": "",
+            "linkedin_url": "",
+            "bluesky_url": "",
+            "snapchat_url": "",
+            "pinterest_url": "",
+            "tumblr_url": "",
+            "vimeo_url": "",
+            "custom_url": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "social_links_EmEyUX"
+      ],
+      "name": "Footer",
+      "settings": {
+        "logo": "shopify://shop_images/logo.png",
+        "tagline": "LOOK LESS COOKED.",
+        "copyright": "ROOD™ © 2026 ALL RIGHTS RESERVED.\n<a href=\"/policies/terms-of-service\" rel=\"noopener noreferrer\">TERMS + CONDITIONS</a>. A <a href=\"https://www.wulfe.company/\" target=\"_blank\" rel=\"noopener noreferrer\">WÜLFE</a> SITE.",
+        "follow_us_text": "FOLLOW US, OR DON’T. WE’RE NOT YA MUM.",
+        "email": "hi@rood.skin",
+        "privacy_policy_link_text": "PRIVACY POLICY",
+        "privacy_policy_link": "shopify://policies/privacy-policy",
+        "refund_policy_link_text": "REFUND POLICY",
+        "refund_policy_link": "shopify://policies/refund-policy",
+        "subscribe_button_text": "SHOP ROOD™",
+        "subscribe_button_link": "shopify://pages/shop",
+        "product_links_title": "PRODUCT",
+        "product_links": "product",
+        "learn_more_title": "learn more",
+        "learn_more_links": "learn-more"
+      }
+    }
+  },
+  "order": [
+    "cs_footer_Pf6hGV"
+  ]
+}

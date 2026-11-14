@@ -1,0 +1,215 @@
+<div class="cs-footer__wrapper">
+  <div class="section">
+    <div class="cs-footer__middle">
+      <div class="row justify-content-between">
+        <div class="col-md-3">
+          <div class="cs-footer__block cs-footer__block--company">
+            {%- if section.settings.logo -%}
+              <div class="cs-footer__logo">
+                <a href="{{ shop.url }}">
+                  {%- assign logo = section.settings.logo -%}
+                  {{ logo | image_url: width: logo.width | image_tag: class: 'add_your_class_here', loading: 'lazy' }}
+                </a>
+              </div>
+            {%- endif -%}
+            {%- if section.settings.tagline -%}
+              <div class="cs-footer__tagline">
+                {{ section.settings.tagline }} 
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+        {%- if section.settings.product_links -%}
+          <div class="col-md-2 col-6">
+            <div class="cs-footer__block cs-footer__block--links">
+              <h4 class="cs-footer__block-title">
+                {{ section.settings.product_links_title }} 
+              </h4>
+              <ul class="cs-footer__links-list">
+                {%- assign product_links = section.settings.product_links.links -%}
+                {%- for link in product_links -%}
+                  <li class="cs-footer__links-item">
+                    {{ link.title | link_to: link.url }}
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          </div>
+        {%- endif -%}
+        {%- if section.settings.learn_more_links -%}
+          <div class="col-md-2 col-6">
+            <div class="cs-footer__block cs-footer__block--links">
+              <h4 class="cs-footer__block-title">
+                {{ section.settings.learn_more_title }} 
+              </h4>
+              <ul class="cs-footer__links-list">
+                {%- assign learn_more_links = section.settings.learn_more_links.links -%}
+                {%- for link in learn_more_links -%}
+                  <li class="cs-footer__links-item">
+                    {{ link.title | link_to: link.url }}
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          </div>
+        {%- endif -%}
+        <div class="col-md-4">
+          <div class="cs-footer__block cs-footer__block--buttons">
+            {%- if section.settings.subscribe_button_link  -%}
+              <a href="{{ section.settings.subscribe_button_link }}" class="th-btn">
+                <span class="text">{{ section.settings.subscribe_button_text }}</span> 
+              </a>
+            {%- endif -%}
+            {%- if section.settings.email  -%}
+              <a href="mailto:{{ section.settings.email }}" class="cs-footer__email">{{ section.settings.email }}</a>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cs-footer__bottom">
+      <div class="row justify-content-between align-items-end g-4 g-md-0">
+        {%- if section.settings.copyright -%}
+          <div class="col-md-3 order-4 order-md-0">
+            <div class="cs-footer__copyright">
+              {{ section.settings.copyright }} 
+            </div>
+          </div>
+        {%- endif -%}
+        {%- if section.settings.privacy_policy_link -%}
+          <div class="col-md-2 col-6 order-1">
+            <div class="cs-footer__link">
+              <a href="{{ section.settings.privacy_policy_link }}" class="cs-footer__privacy-policy-link">{{ section.settings.privacy_policy_link_text }}</a>
+            </div>
+          </div>
+        {%- endif -%}
+        {%- if section.settings.refund_policy_link -%}
+          <div class="col-md-2 col-6 order-2">
+            <div class="cs-footer__link">
+              <a href="{{ section.settings.refund_policy_link }}" class="cs-footer__refund-policy-link">{{ section.settings.refund_policy_link_text }}</a>
+            </div>
+          </div>
+        {%- endif -%}
+        <div class="col-md-4 order-3">
+          <div class="cs-footer__follow-us">
+            {%- if section.settings.follow_us_text -%}
+              <p class="cs-footer__follow-us-text">{{ section.settings.follow_us_text }}</p>
+            {%- endif -%}
+            {% content_for 'blocks' %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+  "name": "Footer",
+  "class": "cs-footer",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "can’t-be-stuffed skincare."
+    },
+    {
+      "type": "html",
+      "id": "copyright",
+      "label": "Copyright",
+      "default": "ROOD™ © 2025 ALL RIGHTS RESERVED. A WÜLFE SITE."
+    },
+    {
+      "type": "text",
+      "id": "follow_us_text",
+      "label": "Follow Us Text",
+      "default": "FOLLOW US, OR DON’T. WE’RE NOT YA MUM."
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email",
+      "default": "hi@rood.skin"
+    },
+        {
+      "type": "text",
+      "id": "privacy_policy_link_text",
+      "label": "Privacy Policy Link Text",
+      "default": "PRIVACY POLICY"
+    },
+    {
+      "type": "url",
+      "id": "privacy_policy_link",
+      "label": "Privacy Policy Link"
+    },
+    {
+      "type": "text",
+      "id": "refund_policy_link_text",
+      "label": "Refund Policy Link Text",
+      "default": "REFUND POLICY"
+    },
+    {
+      "type": "url",
+      "id": "refund_policy_link",
+      "label": "Refund Policy Link"
+    },
+    {
+      "type": "text",
+      "id": "subscribe_button_text",
+      "label": "Subscribe Button Text",
+      "default": "SUBSCRIBE + WIN $10,000"
+    },
+    {
+      "type": "url",
+      "id": "subscribe_button_link",
+      "label": "Subscribe Button Link"
+    },
+    {
+      "type": "text",
+      "id": "product_links_title",
+      "label": "Product Links Title",
+      "default": "PRODUCT"
+    },
+    {
+      "type": "link_list",
+      "id": "product_links",
+      "label": "Product Links"
+    },
+    {
+      "type": "text",
+      "id": "learn_more_title",
+      "label": "Learn More Title",
+      "default": "learn more"
+    },
+    {
+      "type": "link_list",
+      "id": "learn_more_links",
+      "label": "Learn More Links"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "social-links"
+    },
+  ],
+  "presets": [
+    {
+      "name": "Footer"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

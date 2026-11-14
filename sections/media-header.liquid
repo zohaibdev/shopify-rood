@@ -1,0 +1,267 @@
+<div class="media-header__wrapper">
+    <div class="section">
+        <div class="media-header__content">
+            <div class="media-header__stars">
+                <svg width="95" height="18" viewBox="0 0 95 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.25853 6.87566L9.50078 0L11.743 6.87566H19L13.1285 11.1243L15.3707 18L9.50078 13.7513L3.62927 18L5.87151 11.1243L0 6.87566H7.25853Z" fill="#B4930A"/>
+                    <path d="M26.2585 6.87566L28.5008 0L30.743 6.87566H38L32.1285 11.1243L34.3707 18L28.5008 13.7513L22.6293 18L24.8715 11.1243L19 6.87566H26.2585Z" fill="#B4930A"/>
+                    <path d="M45.2585 6.87566L47.5008 0L49.743 6.87566H57L51.1285 11.1243L53.3707 18L47.5008 13.7513L41.6293 18L43.8715 11.1243L38 6.87566H45.2585Z" fill="#B4930A"/>
+                    <path d="M64.2585 6.87566L66.5008 0L68.743 6.87566H76L70.1285 11.1243L72.3707 18L66.5008 13.7513L60.6293 18L62.8715 11.1243L57 6.87566H64.2585Z" fill="#B4930A"/>
+                    <path d="M83.2585 6.87566L85.5008 0L87.743 6.87566H95L89.1285 11.1243L91.3707 18L85.5008 13.7513L79.6293 18L81.8715 11.1243L76 6.87566H83.2585Z" fill="#B4930A"/>
+                </svg>
+            </div>
+            {%- if section.settings.title -%}
+                <h1 class="media-header__title">{{ section.settings.title }}</h1>
+            {%- endif -%}
+            {%- if section.settings.subtitle -%}
+                <p class="media-header__subtitle">{{ section.settings.subtitle }}</p>
+            {%- endif -%}
+            <button type="button" class="th-btn" id="meTooBtn">
+                    <span class="text">{{ section.settings.button_text | default: 'me too' }}</span>
+                    <span class="icon">
+                        <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 6.0127H10M10 6.0127L4.84375 0.512695M10 6.0127L4.84375 11.5127" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                    </span>
+                </button>
+        </div>
+    </div>
+</div>
+
+<!-- Me Too Popup Form -->
+<div class="metoo-popup-overlay" id="meTooPopup">
+    <div class="metoo-popup">
+        <button type="button" class="metoo-popup__close" id="closePopup">&times;</button>
+        <h2 class="metoo-popup__title">Join the Roodheads</h2>
+        <p class="metoo-popup__subtitle">Share your story with us!</p>
+        {% form 'contact', id: 'ContactForm', class: 'contact-form-block' %}
+            <input type="hidden" name="contact[subject]" value="New Roodhead Submission">
+            <input type="hidden" name="utf8" value="✓">
+            <div class="contact-form__fields">
+                <div class="row g-4">
+                    <div class="col-md-12">
+                        <div class="contact-form__field">
+                            <input type="text" id="ContactFormName" name="contact[name]" placeholder="Name" class="contact-form__input name-field" required>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="contact-form__field">
+                            <input type="tel" id="ContactFormPhone" name="contact[mobile]" placeholder="Mobile" class="contact-form__input">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="contact-form__field">
+                              <input type="email" id="ContactFormEmail" name="contact[email]" placeholder="Email" class="contact-form__input" required>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="contact-form__field">
+                              <input type="text" id="ContactFormInsta" name="contact[instagram]" placeholder="Instagram Handle" class="contact-form__input" required>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="contact-form__action">
+                            <button type="submit" class="th-btn contact-form__submit">
+                                <span class="text">Submit</span>
+                                <span class="icon">
+                                    <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0 6.0127H10M10 6.0127L4.84375 0.512695M10 6.0127L4.84375 11.5127" stroke="currentColor" stroke-width="1.5"/>
+                                    </svg>
+                                </span>
+                            </button>
+                            <small>By submitting, you’re okay with us getting back to you. You can opt out anytime.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            {% if form.posted_successfully? %}
+                <div class="form-success mt-4">
+                  <h4>Thanks for reaching out!</h4>
+                  <p>Your message has been successfully submitted. Our team will review it and respond shortly.</p>
+                </div>
+            {% endif %}
+
+            {% if form.errors %}
+                <div class="form-errors mt-4">
+                  {{ form.errors | default_errors }}
+                </div>
+            {% endif %}
+        {% endform %}
+    </div>
+</div>
+
+
+{% schema %}
+  {
+  "name": "Media Header",
+  "class": "media-header",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Roodheads™"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "No skincare experts. Nothing staged. Just Rood Heads. "
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "me too"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Media Header"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+.metoo-popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.metoo-popup-overlay.active {
+    display: flex;
+}
+
+.metoo-popup {
+    background: #fff;
+    border-radius: 12px;
+    padding: 40px;
+    max-width: 450px;
+    width: 100%;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.metoo-popup__close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #333;
+    line-height: 1;
+}
+
+.metoo-popup__close:hover {
+    color: #000;
+}
+
+.metoo-popup__title {
+    font-size: 24px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.metoo-popup__subtitle {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.metoo-form__group {
+    margin-bottom: 24px;
+}
+
+.metoo-form__submit {
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.metoo-form__success {
+    text-align: center;
+    padding: 20px;
+}
+
+.metoo-form__success svg {
+    color: #22c55e;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 480px) {
+    .metoo-popup {
+        padding: 30px 20px;
+    }
+}
+{% endstylesheet %}
+
+{% javascript %}
+(function() {
+    document.querySelector(".name-field").addEventListener("input", function () {
+        this.value = this.value.replace(/[^a-zA-Z\s]/g, '');
+    });
+
+    const meTooBtn = document.getElementById('meTooBtn');
+    const popup = document.getElementById('meTooPopup');
+    const closeBtn = document.getElementById('closePopup');
+
+    // Open popup
+    function openPopup() {
+        popup.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    meTooBtn.addEventListener('click', openPopup);
+
+    // Close popup
+    function closePopup() {
+        popup.classList.remove('active');
+        document.body.style.overflow = '';
+        // Clean up URL if form was submitted
+        if (window.location.search.includes('contact_posted=true')) {
+            const url = window.location.pathname;
+            window.history.replaceState({}, document.title, url);
+        }
+    }
+
+    closeBtn.addEventListener('click', closePopup);
+
+    popup.addEventListener('click', function(e) {
+        if (e.target === popup) {
+            closePopup();
+        }
+    });
+
+    // Close on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && popup.classList.contains('active')) {
+            closePopup();
+        }
+    });
+
+    // Auto-open popup if form was just submitted
+    if (window.location.search.includes('contact_posted=true') || window.location.hash.includes('ContactForm')) {
+        openPopup();
+    }
+})();
+{% endjavascript %}

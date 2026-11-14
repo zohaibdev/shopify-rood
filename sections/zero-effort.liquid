@@ -1,0 +1,96 @@
+<div class="zero-effort__wrapper">
+    <div class="section">
+        <div class="row">
+            <div class="col-md-6 d-flex flex-column justify-content-space-between">
+                {%- if section.settings.title -%}
+                  <div class="zero-effort__title-block">
+                      <h2 class="zero-effort__title">{{ section.settings.title }}</h2>
+                  </div>
+                {%- endif -%}
+                {%- if section.settings.button_link -%}
+                  <div class="zero-effort__action">
+                      <a href="{{ section.settings.button_link }}" class="th-btn">
+                          <span class="icon">
+                            <img src="{{ 'dollars-bag.svg' | asset_url }}" alt="dollars bag" loading="lazy" />
+                          </span>
+                          <span class="text">{{ section.settings.button_text }}</span>
+                      </a>
+                  </div>
+                {%- endif -%}
+
+            </div>
+            <div class="col-md-6">
+                <div class="zero-effort__blocks">
+                    <div class="row g-lg-6 g-3">
+                        {%- for block in section.blocks -%}
+                            <div class="col-md-6">
+                                <div class="zero-effort__block">
+                                    <h3 class="zero-effort__block-title">{{ block.settings.title }}</h3>
+                                    <p class="zero-effort__block-content">{{ block.settings.content }}</p>
+                                </div>
+                            </div>
+                        {%- endfor -%}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+  {
+  "name": "Zero Effort",
+  "class": "zero-effort",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "LOOK LESS COOKED  WITH ZERO EFFORT."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "SUBSCRIBE + WIN $10,000"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Block",
+      "type": "block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "15 minutes."
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Content",
+          "default": "Hydrates and revives tired skin fast so you look awake, not wrecked - all in one quick hit."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Zero Effort"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

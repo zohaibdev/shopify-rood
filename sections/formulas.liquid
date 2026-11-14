@@ -1,0 +1,83 @@
+<div class="section">
+    <div class="formulas__wrapper">
+        {%- if section.settings.title -%}
+            <p class="formulas__title">{{ section.settings.title }}</p>
+        {%- endif -%}
+        <div class="formulas__list">
+            <div class="row g-lg-4 g-3">
+                {%- for block in section.blocks -%}
+                    <div class="col-md-4 col-6">
+                        <div class="formulas__item">
+                            {%- assign image = block.settings.image -%}
+                            {%- if image -%}
+                                <div class="formulas__image">
+                                    {{ image | image_url: width: image.width | image_tag: class: 'formulas__img', loading: 'lazy' }}
+                                </div>
+                            {%- endif -%}
+                            {%- if block.settings.title -%}
+                                <h4 class="formulas__item-title">{{ block.settings.title }}</h4>
+                            {%- endif -%}
+                            {%- if block.settings.content -%}
+                                <div class="formulas__item-content">
+                                    {{ block.settings.content }}
+                                </div>
+                            {%- endif -%}
+                        </div>
+                    </div>
+                {%- endfor -%}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% schema %}
+  {
+  "name": "Formulas",
+  "class": "formulas",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "The formulas do the heavy lifting. You just slap it on."
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Formula",
+      "type": "formula",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Niacinamide (B3)"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Formulas"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

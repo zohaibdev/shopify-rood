@@ -1,0 +1,114 @@
+<div class="testimonials__wrapper">
+    <div class="section">
+        <div class="testimonials__content">
+            {%- if section.settings.title -%}
+                <h2 class="testimonials__title">{{ section.settings.title }}</h2>
+            {%- endif -%}
+            {%- if section.settings.content -%}
+                <p class="testimonials__text">{{ section.settings.content }}</p>
+            {%- endif -%}
+        </div>
+        <div class="testimonials__blocks">
+            <div class="row g-3">
+                {%- for block in section.blocks -%}
+                    <div class="col-md-4">
+                        <div class="testimonials__item">
+                            <div class="testimonials__item-frame">
+                                {%- if block.settings.image -%}
+                                    {%- assign image = block.settings.image -%}
+                                    <div class="testimonials__item-image">
+                                        {{ image | image_url: width: image.width | image_tag: class: 'img-fluid', loading: 'lazy' }}
+                                    </div>
+                                {%- endif -%}
+                                <div class="testimonials__item-content">
+                                    <p class="testimonials__item-review">{{ block.settings.review }}</p>
+                                    {%- if block.settings.on_hover_name -%}
+                                        <p class="testimonials__item-name">{{ block.settings.on_hover_name }}</p>
+                                    {%- endif -%}
+                                </div>
+                            </div>
+                            <div class="testimonials__item-info">
+                                {%- if block.settings.name -%}
+                                    <h4 class="testimonials__item-iname">{{ block.settings.name }}</h4>
+                                {%- endif -%}
+                                {%- if block.settings.position -%}
+                                    <p class="testimonials__item-position">{{ block.settings.position }}</p>
+                                {%- endif -%}
+                            </div>
+                        </div>
+                    </div>
+                {%- endfor -%}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% schema %}
+  {
+  "name": "Testimonials",
+  "class": "testimonials",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "ROOD HEADS"
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "Content",
+      "default": "Before the game. After a big night. Pre-meeting. Rood Heads know."
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Testimonials",
+      "type": "testimonials",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Jesse arthars"
+        },
+        {
+          "type": "text",
+          "id": "on_hover_name",
+          "label": "Name on Hover"
+        },
+        {
+          "type": "text",
+          "id": "position",
+          "label": "Position",
+          "default": "NRL Player"
+        },
+        {
+          "type": "textarea",
+          "id": "review",
+          "label": "Review",
+          "default": "“Rood™ MAKES ME FEEL AWAKE. IT’S JUST SO EASY”"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

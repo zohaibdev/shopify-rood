@@ -1,0 +1,238 @@
+
+
+<div class="join-rood__wrapper">
+    <div class="section">
+        <div class="join-rood__block">
+            {%- if section.settings.title -%}
+                <h2 class="join-rood__title">{{ section.settings.title }}</h2>
+            {%- endif -%}
+            {%- if section.settings.content -%}
+                <p class="join-rood__content">{{ section.settings.content }}</p>
+            {%- endif -%}
+
+            <div class="join-rood__form">
+              <!-- Progress Indicator -->
+
+              {% form 'customer', class: 'newsletter-form multistep-form' %}
+                <input type="hidden" name="contact[tags]" value="newsletter">
+
+                <!-- Step 1: Full Name -->
+                <div class="form-step active" data-step="1">
+                  <div class="form-group">
+                    <input 
+                      type="text" 
+                      id="newsletter-first-name" 
+                      class="name-field"
+                      name="contact[Full Name]" 
+                      placeholder="Full Name"
+                      pattern="[A-Za-z\s]+"
+                      required>
+                  </div>
+                  <div class="step-buttons">
+                    <button type="button" class="th-btn btn-next" data-next="2">
+                      <svg width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 11.2012H20M20 11.2012L9.6875 0.701172M20 11.2012L9.6875 21.7012" stroke="currentColor" stroke-width="2"/>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Step 2: Phone -->
+                <div class="form-step" data-step="2">
+                  <div class="form-group">
+                    <input 
+                      type="tel" 
+                      id="newsletter-phone" 
+                      name="contact[Phone]" 
+                      placeholder="Phone Number"
+                      required>
+                  </div>
+                  <div class="step-buttons">
+                    <button type="button" class="th-btn btn-next" data-next="3">
+                      <svg width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 11.2012H20M20 11.2012L9.6875 0.701172M20 11.2012L9.6875 21.7012" stroke="currentColor" stroke-width="2"/>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Step 3: Email -->
+                <div class="form-step" data-step="3">
+                  <div class="form-group">
+                    <input 
+                      type="email" 
+                      id="newsletter-email" 
+                      name="contact[email]" 
+                      placeholder="Email Address"
+                      required>
+                  </div>
+                  <div class="step-buttons">
+                    <button type="submit" class="th-btn btn-submit">
+                      <svg width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 11.2012H20M20 11.2012L9.6875 0.701172M20 11.2012L9.6875 21.7012" stroke="currentColor" stroke-width="2"/>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                {% if form.posted_successfully? %}
+                  <p class="form-success m-0 mt-3">We’re excited to have you with us. Stay tuned for the latest updates, insights, and special offers delivered straight to your inbox.</p>
+                {% endif %}
+
+                {% if form.errors %}
+                  <div class="form-errors m-0 mt-3">
+                    {{ form.errors | default_errors }}
+                  </div>
+                {% endif %}
+              {% endform %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+
+  .form-step {
+    display: none;
+  }
+  .form-step.active {
+    display: flex;
+    gap:20px;
+    animation: fadeIn 0.3s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  
+</style>
+
+<script>
+(function() {
+  document.querySelector(".name-field").addEventListener("input", function () {
+      this.value = this.value.replace(/[^a-zA-Z\s]/g, '');
+  });
+
+
+  const form = document.querySelector('.multistep-form');
+  if (!form) return;
+
+  const steps = form.querySelectorAll('.form-step');
+  const progressSteps = document.querySelectorAll('.progress-step');
+  const progressLines = document.querySelectorAll('.progress-line');
+  let currentStep = 1;
+
+  function showStep(stepNumber) {
+    steps.forEach(step => {
+      step.classList.remove('active');
+      if (parseInt(step.dataset.step) === stepNumber) {
+        step.classList.add('active');
+      }
+    });
+
+    progressSteps.forEach((ps, index) => {
+      const stepNum = parseInt(ps.dataset.step);
+      ps.classList.remove('active', 'completed');
+      if (stepNum === stepNumber) {
+        ps.classList.add('active');
+      } else if (stepNum < stepNumber) {
+        ps.classList.add('completed');
+      }
+    });
+
+    progressLines.forEach((line, index) => {
+      line.classList.remove('active');
+      if (index < stepNumber - 1) {
+        line.classList.add('active');
+      }
+    });
+
+    currentStep = stepNumber;
+  }
+
+  function validateStep(stepNumber) {
+    const currentStepEl = form.querySelector(`.form-step[data-step="${stepNumber}"]`);
+    const inputs = currentStepEl.querySelectorAll('input[required]');
+    let isValid = true;
+
+    inputs.forEach(input => {
+      if (!input.value.trim()) {
+        isValid = false;
+        input.classList.add('error');
+      } else {
+        input.classList.remove('error');
+      }
+
+      if (input.type === 'email' && input.value) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(input.value)) {
+          isValid = false;
+          input.classList.add('error');
+        }
+      }
+    });
+
+    return isValid;
+  }
+
+  form.addEventListener('click', function(e) {
+    const nextBtn = e.target.closest('.btn-next');
+    const prevBtn = e.target.closest('.btn-prev');
+
+    if (nextBtn) {
+      e.preventDefault();
+      if (validateStep(currentStep)) {
+        const nextStep = parseInt(nextBtn.dataset.next);
+        showStep(nextStep);
+      }
+    }
+
+    if (prevBtn) {
+      e.preventDefault();
+      const prevStep = parseInt(prevBtn.dataset.prev);
+      showStep(prevStep);
+    }
+  });
+
+  form.addEventListener('submit', function(e) {
+    if (!validateStep(currentStep)) {
+      e.preventDefault();
+    }
+  });
+})();
+</script>
+
+
+{% schema %}
+  {
+  "name": "Join Rood",
+  "class": "join-rood",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "JOIN THE ROODIES"
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "Content",
+      "default": "A newsletter, in 2026? What a time to be alive."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Join Rood"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

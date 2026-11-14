@@ -1,0 +1,35 @@
+{%- if section.settings.image -%}
+  <div class="april-fool-banner__image">
+    {%- assign image = section.settings.image -%}
+    {{ image | image_url: width: image.width | image_tag: class: 'add_your_class_here', loading: 'lazy' }}
+  </div>
+{%- endif -%}
+
+
+{% schema %}
+  {
+  "name": "April Fool Banner",
+  "class": "april-fool-banner",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "April Fool Banner"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+
+
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

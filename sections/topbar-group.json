@@ -1,0 +1,26 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "Topbar Group",
+  "type": "header",
+  "sections": {
+    "april_fool_banner_XHMfrL": {
+      "type": "april-fool-banner",
+      "disabled": true,
+      "name": "April Fool Banner",
+      "settings": {
+        "image": "shopify://shop_images/Untitled_Artwork_1_ebc765e7-d0d9-4439-a58c-486dd9ba28ce.png"
+      }
+    }
+  },
+  "order": [
+    "april_fool_banner_XHMfrL"
+  ]
+}

@@ -1,0 +1,800 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+<script>var slickJQuery = jQuery.noConflict(true);</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"  />
+
+{%- if section.settings.white_logo -%}
+  {%- comment -%}
+    The transparent Shop header sits over this section's dark image, so its logo (and on mobile its icons)
+    turn white there. Scoped to the Shop page while the header is transparent: the sticky header and open
+    menus keep their regular look, and the shared header files stay untouched.
+  {%- endcomment -%}
+  {% style %}
+    .template-shop .header[transparent]:not([data-sticky-state='active'])
+      .header__row:not(
+        :has(
+          .mega-menu__list:hover,
+          .menu-list__link[aria-haspopup]:is(:hover, [aria-expanded='true'], [data-animating]),
+          .menu-list__list-item[slot='overflow'] .menu-list__link:is(:hover, [aria-expanded='true'], [data-animating])
+        )
+      ) {
+      {%- if settings.logo_inverse != blank %}
+        .header-logo__image-container--original {
+          background: url('{{ settings.logo_inverse | image_url: width: settings.logo_inverse.width }}') center / contain no-repeat;
+        }
+
+        .header-logo__image {
+          opacity: 0;
+        }
+      {%- else %}
+        .header-logo__image {
+          filter: brightness(0) invert(1);
+        }
+      {%- endif %}
+    }
+
+    /* Mobile: the image runs under the whole header, so add a short top shade and white header icons. */
+    @media screen and (max-width: 767px) {
+      #shopify-section-{{ section.id }} .monthly-mug__gallery {
+        position: relative;
+      }
+
+      #shopify-section-{{ section.id }} .monthly-mug__gallery::before {
+        content: '';
+        position: absolute;
+        inset: 0 0 auto;
+        height: 120px;
+        background: linear-gradient(to bottom, rgb(0 0 0 / 50%), rgb(0 0 0 / 0%));
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .template-shop .header[transparent]:not([data-sticky-state='active']) {
+        --color-foreground: rgb(255 255 255);
+        --color-foreground-rgb: 255 255 255;
+        color: var(--color-foreground);
+      }
+    }
+  {% endstyle %}
+{%- endif -%}
+
+<div
+  class="monthly-mug__wrapper"
+  data-section-id="{{ section.id }}"
+  data-switch-gallery-on-plan-change="{{ section.settings.switch_gallery_on_plan_change }}"
+  data-cart-drawer-section-id="{{ section.settings.cart_drawer_section_id }}"
+  data-cart-drawer-container-selector="{{ section.settings.cart_drawer_container_selector }}"
+>
+  <div class="section--full-width">
+    <div class="row align-items-center gy-3 gx-md-0">
+      <div class="col-md-5 align-self-start monthly-mug__gallery">
+        <div class="product-radio-selector__slider" data-slider>
+          {% for block in section.blocks %}
+            {%- if block.settings.is_trial == false -%}
+              {% assign product = block.settings.product %}
+              {% if product != blank and product.featured_image %}
+                <div class="product-radio-selector__slide" data-product-id="{{ product.id }}">
+                  <img
+                    src="{{ product.featured_image | image_url: width: 1200 }}"
+                    alt="{{ product.featured_image.alt | escape }}"
+                    loading="lazy"
+                  >
+                </div>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        </div>
+        {%- liquid
+          # Thumbnails show the plans not in the main image; the default plan's thumbnail starts hidden.
+          assign main_product_id = blank
+          for block in section.blocks
+            if block.settings.is_trial == false and block.settings.by_default_selected and block.settings.product != blank
+              assign main_product_id = block.settings.product.id
+              break
+            endif
+          endfor
+        -%}
+        <div class="product-radio-selector__thumbs" data-thumbs>
+          {% for block in section.blocks %}
+            {% if block.settings.is_trial == false %}
+              {% assign product = block.settings.product %}
+              {% if product != blank and product.featured_image %}
+                <button
+                  type="button"
+                  class="product-radio-selector__thumb"
+                  data-product-id="{{ product.id }}"
+                  aria-label="{{ product.title | escape }}"
+                  {% if product.id == main_product_id %}hidden{% endif %}
+                >
+                  <img
+                    src="{{ product.featured_image | image_url: width: 300 }}"
+                    alt=""
+                    loading="lazy"
+                  >
+                </button>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="col-md-7 px-md-5">
+        <div class="monthly-mug__content">
+          {%- if section.settings.subtitle -%}
+            <p class="monthly-mug__subtitle">{{ section.settings.subtitle }}</p>
+          {%- endif -%}
+          {%- if section.settings.title -%}
+            <h2 class="monthly-mug__title">{{ section.settings.title }}</h2>
+          {%- endif -%}
+          {%- if section.settings.content -%}
+            <p class="monthly-mug__content-text">{{ section.settings.content }}</p>
+          {%- endif -%}
+          
+          <div
+            class="product-radio-selector__options"
+            role="radiogroup"
+            aria-label="{{ section.settings.heading | escape }}"
+          >
+            {% for block in section.blocks %}
+              {%- if block.settings.is_trial == false -%}
+                {% assign product = block.settings.product %}
+                {% if product != blank %}
+                  {% assign variant = product.selected_or_first_available_variant %}
+                  {% if variant.selling_plan_allocations.size > 0 %}
+                    {% assign first_plan = variant.selling_plan_allocations.first %}
+                  {% endif %}
+                  <label class="product-radio-selector__option" for="prs-{{ section.id }}-{{ block.id }}">
+                    <input
+                      type="radio"
+                      id="prs-{{ section.id }}-{{ block.id }}"
+                      name="prs-{{ section.id }}"
+                      value="{{ variant.id }}"
+                      data-selling-plan-id="{{ first_plan.selling_plan.id }}"
+                      data-product-id="{{ product.id }}"
+                      {% if block.settings.by_default_selected %}checked{% endif %}
+                    >
+                    <span class="product-radio-selector__card">
+                      <span class="product-radio-selector__card-top{% if block.settings.description != blank %} product-radio-selector__card-top--has-description{% endif %}">
+                        <span class="product-radio-selector__label">
+                          {% if block.settings.label != blank %}
+                            {{ block.settings.label }}
+                          {% else %}
+                            {{ product.title }}
+                          {% endif %}
+                        </span>
+                        {% if block.settings.description != blank %}
+                          <span class="product-radio-selector__description">{{ block.settings.description | escape }}</span>
+                        {% endif %}
+                        {% if block.settings.badge != blank %}
+                          <span class="product-radio-selector__badge">{{ block.settings.badge }}</span>
+                        {% endif %}
+
+                        {% if block.settings.show_price %}
+                          <span class="product-radio-selector__price-wrapper">
+                            <span class="product-radio-selector__price">{{ variant.price | money }}</span>
+                            <span class="product-radio-selector__frequency">{{ block.settings.frequencies }}</span>
+                          </span>
+                        {% endif %}
+                      </span>
+                      {% render 'product-checklist', product: product, section: section %}
+                    </span>
+                  </label>
+                {% endif %}
+              {%- endif -%}
+
+            {% endfor %}
+          </div>
+
+          <div class="monthly-mug__trial">
+            {%- if section.settings.trail_message -%}
+              <p class="monthly-mug__trial-message">{{ section.settings.trail_message }}</p>
+            {%- endif -%}
+            {% for block in section.blocks %}
+              {%- if block.settings.is_trial == true -%}
+
+                {% assign product = block.settings.product %}
+                {% if product != blank %}
+                  {% assign variant = product.selected_or_first_available_variant %}
+
+                  <label class="product-radio-selector__option product-radio-selector__option--trial" for="prs-{{ section.id }}-{{ block.id }}">
+                    <input
+                      type="radio"
+                      id="prs-{{ section.id }}-{{ block.id }}"
+                      name="prs-{{ section.id }}"
+                      value="{{ variant.id }}"
+                      data-selling-plan-id="{{ block.settings.selling_plan_id }}"
+                      data-product-id="{{ product.id }}"
+                      {% if block.settings.by_default_selected %}checked{% endif %}
+                    >
+                    <span class="product-radio-selector__card">
+                      <span class="product-radio-selector__card-top">
+                        <span class="product-radio-selector__label">
+                          {% if block.settings.label != blank %}
+                            {{ block.settings.label }}
+                          {% else %}
+                            {{ product.title }}
+                          {% endif %}
+                        </span>
+                        {% if block.settings.badge != blank %}
+                          <span class="product-radio-selector__badge">{{ block.settings.badge }}</span>
+                        {% endif %}
+
+                        {% if block.settings.show_price %}
+                          <span class="product-radio-selector__price-wrapper">
+                            <span class="product-radio-selector__price">{{ variant.price | money }}</span>
+                            <span class="product-radio-selector__frequency">Once</span>
+                          </span>
+                        {% endif %}
+                      </span>
+                      {% render 'product-checklist', product: product, section: section %}
+                    </span>
+                  </label>
+                {% endif %}
+              {%- endif -%}
+            {% endfor %}
+          </div>
+
+          <button
+            class="product-radio-selector__add th-btn justify-center"
+            type="button"
+            data-add-to-cart
+          >
+            <span class="btn-content">
+              <span class="text">{{ section.settings.button_text }}</span>
+              <span class="icon">
+                <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 7.51855H13M13 7.51855L6.29688 0.518555M13 7.51855L6.29688 14.5186" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+              </span>
+            </span>
+            <span class="btn-loader">
+              <svg class="spinner" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-dasharray="31.4 31.4" />
+              </svg>
+            </span>
+          </button>
+
+
+          {%- if section.settings.tax_message -%}
+            <div class="monthly-mug__tax-message mt-2">
+              {{ section.settings.tax_message }}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    // Wait for slickJQuery and slick to be ready
+    var waitForSlick = function(callback) {
+      if (typeof slickJQuery !== 'undefined' && typeof slickJQuery.fn.slick === 'function') {
+        callback();
+      } else {
+        setTimeout(function() {
+          waitForSlick(callback);
+        }, 50);
+      }
+    };
+
+    waitForSlick(function() {
+      var section = document.querySelector('[data-section-id="{{ section.id }}"]');
+      if (!section) return;
+
+      var sliderEl = section.querySelector('[data-slider]');
+      var thumbsEl = section.querySelector('[data-thumbs]');
+      var addButton = section.querySelector('[data-add-to-cart]');
+      var switchGalleryOnPlanChange = section.getAttribute('data-switch-gallery-on-plan-change') === 'true';
+      var statusEl = section.querySelector('.product-radio-selector__status');
+      var cartDrawerSectionId = section.getAttribute('data-cart-drawer-section-id');
+      var cartDrawerContainerSelector = section.getAttribute('data-cart-drawer-container-selector');
+      var themeEvents = window.ThemeEvents || {};
+      var cartUpdateEventName = themeEvents.cartUpdate || 'cart:update';
+
+    var initSlider = function () {
+      if (!sliderEl) return;
+      if (typeof slickJQuery !== 'undefined' && typeof slickJQuery.fn.slick === 'function') {
+        var $slider = slickJQuery(sliderEl);
+
+        if (!$slider.hasClass('slick-initialized')) {
+          // Thumbnails always mirror the main slide, however it was reached.
+          // Fade the thumbnails out as the main image starts to slide, swap them unseen, then fade back in.
+          var showThumbsFor = function (slideIndex) {
+            syncThumbs(slideIndex);
+            thumbsEl.classList.remove('is-updating');
+          };
+
+          $slider.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+            if (!thumbsEl || currentSlide === nextSlide) return;
+
+            var fadeMs = parseFloat(getComputedStyle(thumbsEl).transitionDuration) * 1000 || 0;
+            thumbsEl.classList.add('is-updating');
+            clearTimeout(thumbsEl.swapTimer);
+            thumbsEl.swapTimer = setTimeout(function () {
+              showThumbsFor(nextSlide);
+            }, fadeMs);
+          });
+
+          // Settles the final state if slides change faster than the fade.
+          $slider.on('afterChange', function (event, slick, currentSlide) {
+            if (!thumbsEl) return;
+            clearTimeout(thumbsEl.swapTimer);
+            showThumbsFor(currentSlide);
+          });
+
+          // Start on the default plan's image so the first slide never flashes before the jump.
+          var checkedRadio = section.querySelector('input[type="radio"]:checked');
+          var initialSlide = 0;
+          sliderEl.querySelectorAll('[data-product-id]').forEach(function (slide, index) {
+            if (checkedRadio && slide.getAttribute('data-product-id') === checkedRadio.getAttribute('data-product-id')) {
+              initialSlide = index;
+            }
+          });
+
+          $slider.slick({
+            infinite: false,
+            arrows: false,
+            dots: false,
+            adaptiveHeight: true,
+            initialSlide: initialSlide,
+          });
+
+          if (thumbsEl) {
+            thumbsEl.addEventListener('click', function (event) {
+              var thumb = event.target.closest('[data-product-id]');
+              if (thumb) goToProductSlide(thumb.getAttribute('data-product-id'), false);
+            });
+          }
+        }
+
+        syncThumbs($slider.slick('slickCurrentSlide'));
+      }
+    };
+
+    var syncThumbs = function (slideIndex) {
+      if (!thumbsEl) return;
+
+      var slide = sliderEl.querySelectorAll('[data-product-id]')[slideIndex];
+      var productId = slide ? slide.getAttribute('data-product-id') : null;
+
+      // Hide the thumbnail already shown as the main image, so the others are the choices.
+      thumbsEl.querySelectorAll('[data-product-id]').forEach(function (thumb) {
+        thumb.hidden = thumb.getAttribute('data-product-id') === productId;
+      });
+    };
+
+    var setStatus = function (message, type) {
+      if (!statusEl) return;
+      statusEl.textContent = message || '';
+      statusEl.classList.remove('is-success', 'is-error');
+      if (type === 'success') statusEl.classList.add('is-success');
+      if (type === 'error') statusEl.classList.add('is-error');
+    };
+
+    var setLoading = function (isLoading) {
+      if (!addButton) return;
+      if (isLoading) {
+        addButton.classList.add('is-loading');
+        addButton.disabled = true;
+      } else {
+        addButton.classList.remove('is-loading');
+        addButton.disabled = false;
+      }
+    };
+
+    var refreshCart = function () {
+      return fetch('/cart.js', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error('Cart fetch failed');
+          }
+          return response.json();
+        })
+        .then(function (cart) {
+          var detail = {
+            resource: cart,
+            sourceId: section.id,
+            data: {
+              source: 'product-radio-selector',
+            },
+          };
+          window.dispatchEvent(new CustomEvent(cartUpdateEventName, { detail: detail }));
+          window.dispatchEvent(new CustomEvent('cart:refresh', { detail: { cart: cart } }));
+          window.dispatchEvent(new CustomEvent('cart:updated', { detail: { cart: cart } }));
+          document.dispatchEvent(new CustomEvent('cart:refresh', { detail: { cart: cart } }));
+          document.dispatchEvent(new CustomEvent('cart:updated', { detail: { cart: cart } }));
+          return cart;
+        });
+    };
+
+    var getSectionIds = function () {
+      var ids = [];
+      var cartItemsComponents = document.querySelectorAll('cart-items-component');
+      cartItemsComponents.forEach(function (item) {
+        if (item instanceof HTMLElement && item.dataset.sectionId) {
+          ids.push(item.dataset.sectionId);
+        }
+      });
+
+      if (cartDrawerSectionId) {
+        ids.push(cartDrawerSectionId);
+      }
+
+      return Array.from(new Set(ids));
+    };
+
+    var updateSections = function (sections) {
+      if (!sections) return false;
+      var updated = false;
+
+      Object.keys(sections).forEach(function (id) {
+        var selector = '#shopify-section-' + id;
+        if (id === cartDrawerSectionId && cartDrawerContainerSelector) {
+          selector = cartDrawerContainerSelector;
+        }
+
+        var container = document.querySelector(selector);
+        if (!container) return;
+
+        var temp = document.createElement('div');
+        temp.innerHTML = sections[id];
+        var replacement = temp.querySelector(selector) || temp.firstElementChild;
+        if (!replacement) return;
+
+        container.replaceWith(replacement);
+        updated = true;
+      });
+
+      return updated;
+    };
+
+    var openCartDrawer = function () {
+      if (typeof window.openCartDrawer === 'function') {
+        window.openCartDrawer();
+        return;
+      }
+
+      document.dispatchEvent(new CustomEvent('cart:open'));
+
+      var themeTrigger = document.querySelector('[data-testid="cart-drawer-trigger"], [on\\:click="/open"]');
+      if (themeTrigger && typeof themeTrigger.click === 'function') {
+        themeTrigger.click();
+        return;
+      }
+
+      var openButton = document.querySelector('[data-cart-drawer-open]');
+      if (openButton && typeof openButton.click === 'function') {
+        openButton.click();
+      }
+    };
+
+    var addToCart = function () {
+      var selected = section.querySelector('input[type="radio"]:checked');
+      if (!selected) return;
+
+      var variantId = selected.value;
+      var sellingPlanId = selected.getAttribute('data-selling-plan-id');
+
+      var payload = {
+        items: [
+          {
+            id: parseInt(variantId, 10),
+            quantity: 1,
+          },
+        ],
+      };
+
+      if (sellingPlanId) {
+        payload.items[0].selling_plan = parseInt(sellingPlanId, 10);
+      }
+
+      var sectionIds = getSectionIds();
+      if (sectionIds.length > 0) {
+        payload.sections = sectionIds;
+        payload.sections_url = window.location.pathname;
+      }
+
+      setLoading(true);
+      setStatus('');
+
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      })
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error('Cart add failed');
+          }
+          return response.json();
+        })
+        .then(function (responseJson) {
+          var updated = updateSections(responseJson.sections);
+          if (updated) return null;
+          return refreshCart();
+        })
+        .then(function () {
+          setStatus('Added to cart.', 'success');
+          openCartDrawer();
+          const subscriptionPolicyButton = document.getElementById('shopify-subscription-policy-button');
+          
+          if (subscriptionPolicyButton) {
+            subscriptionPolicyButton.addEventListener('click', function() {
+              // Find the cart drawer dialog
+              const cartDrawer = document.querySelector('.cart-drawer__dialog');
+              
+              if (cartDrawer) {
+                // Close the dialog
+                cartDrawer.close();
+                cartDrawer.removeAttribute('open');
+              }
+              
+              // Also try triggering the close button if the component uses custom close logic
+              const closeButton = document.querySelector('.cart-drawer__close-button');
+              if (closeButton) {
+                closeButton.click();
+              }
+            });
+          }
+          
+        })
+        .catch(function () {
+          setStatus('Could not add to cart.', 'error');
+        })
+        .finally(function () {
+          setLoading(false);
+        });
+    };
+
+    var goToProductSlide = function (productId, isTrial) {
+      console.log('Going to slide for product ID:', productId, 'isTrial:', isTrial);
+
+      if (!sliderEl) return;
+      
+      // Check if slickJQuery and slick are available
+      if (typeof slickJQuery === 'undefined' || typeof slickJQuery.fn.slick !== 'function') {
+        setTimeout(function() {
+          goToProductSlide(productId, isTrial);
+        }, 100);
+        return;
+      }
+      
+      var $slider = slickJQuery(sliderEl);
+      
+      // Agar slider initialized nahi hai to thoda wait karo
+      if (!$slider.hasClass('slick-initialized')) {
+        setTimeout(function() {
+          goToProductSlide(productId, isTrial);
+        }, 100);
+        return;
+      }
+      
+      // Agar trial product hai to pehli slide par jao
+      if (isTrial) {
+        $slider.slick('slickGoTo', 0);
+        return;
+      }
+      
+      if (!productId) return;
+      
+      var slides = sliderEl.querySelectorAll('[data-product-id]');
+      var slideIndex = -1;
+      
+      slides.forEach(function (slide, index) {
+        if (slide.getAttribute('data-product-id') === String(productId)) {
+          slideIndex = index;
+        }
+      });
+      
+      if (slideIndex >= 0) {
+        $slider.slick('slickGoTo', slideIndex);
+      }
+    };
+
+    var setupPlanClickHandlers = function () {
+      var radioInputs = section.querySelectorAll('input[type="radio"][data-product-id]');
+      radioInputs.forEach(function (radio) {
+        radio.addEventListener('change', function () {
+          var productId = this.getAttribute('data-product-id');
+          // Check if this is a trial option
+          var isTrial = this.closest('.product-radio-selector__option--trial') !== null;
+          goToProductSlide(productId, isTrial);
+        });
+      });
+    };
+
+    // By default selected product ki image dikhao
+    var goToDefaultSelectedSlide = function () {
+      var checkedRadio = section.querySelector('input[type="radio"]:checked');
+      if (checkedRadio) {
+        var productId = checkedRadio.getAttribute('data-product-id');
+        var isTrial = checkedRadio.closest('.product-radio-selector__option--trial') !== null;
+        goToProductSlide(productId, isTrial);
+      }
+    };
+
+    if (addButton) {
+      addButton.addEventListener('click', addToCart);
+    }
+    initSlider();
+
+    // Switching the gallery when the plan changes is opt-in; otherwise the slider stays on manual navigation.
+    if (switchGalleryOnPlanChange) {
+      setupPlanClickHandlers();
+    }
+
+    // Page load par default selected product ki slide par jao
+    // Slider initialize hone ke baad thoda delay dena padta hai
+    setTimeout(function() {
+      goToDefaultSelectedSlide();
+    }, 100);
+    }); // waitForSlick callback end
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Monthly Mug",
+  "class": "monthly-mug",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Your monthly mug reset"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Subscribe + ENTER $10,000 GIVEAWAY"
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "content",
+      "default": "Monthly face masks and eye masks for fellas who can’t be stuffed with skincare. Pick your plan and we’ll keep you sorted. Cancel anytime."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "SUBSCRIBE + WIN $10,000"
+    },
+    {
+      "type": "text",
+      "id": "checklist_namespace",
+      "label": "Checklist metafield namespace",
+      "default": "custom"
+    },
+    {
+      "type": "text",
+      "id": "checklist_key",
+      "label": "Includes checklist key",
+      "default": "includes"
+    },
+    {
+      "type": "text",
+      "id": "excludes_checklist_key",
+      "label": "Excludes checklist key",
+      "default": "excludes"
+    },
+    {
+      "type": "text",
+      "id": "cart_drawer_section_id",
+      "label": "Cart drawer section id",
+      "default": "cart-drawer",
+      "info": "Section file name used for section rendering, e.g. cart-drawer"
+    },
+    {
+      "type": "text",
+      "id": "cart_drawer_container_selector",
+      "label": "Cart drawer container selector",
+      "default": "#shopify-section-cart-drawer",
+      "info": "Container selector to replace after add-to-cart"
+    },
+    {
+      "type": "text",
+      "id": "trail_message",
+      "label": "Trail message",
+      "default": "Not ready for monthly? All good."
+    },
+    {
+      "type": "richtext",
+      "id": "tax_message",
+      "label": "Tax message"
+    },
+    {
+      "type": "checkbox",
+      "id": "white_logo",
+      "label": "White header over this section",
+      "info": "Shows the white logo over this section, and on mobile white header icons over a short dark shade. The sticky header keeps its regular look.",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "switch_gallery_on_plan_change",
+      "label": "Switch gallery images when subscription plan changes",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "is_trial",
+          "label": "Is trial option"
+        },
+        {
+          "type": "checkbox",
+          "id": "by_default_selected",
+          "label": "By default selected"
+        },
+        {
+          "type": "text",
+          "id": "frequencies",
+          "label": "Frequencies",
+          "default": "Monthly"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Custom label"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "info": "One line shown under the plan name.",
+          "visible_if": "{{ block.settings.is_trial == false }}"
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge text"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_price",
+          "label": "Show price",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "selling_plan_id",
+          "label": "Selling plan ID (ReCharge / subscriptions)",
+          "info": "Optional. Enter a selling plan ID to add as a subscription."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Monthly Mug"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

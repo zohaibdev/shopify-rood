@@ -1,0 +1,102 @@
+<div class="faq__wrapper">
+    <div class="section">
+        <div class="row g-lg-4 g-3">
+            {%- if section.settings.image -%}
+                <div class="col-md-5 order-md-2">
+                    <div class="faq__image">
+                        {%- assign image = section.settings.image -%}
+                        {{ image | image_url: width: image.width | image_tag: class: 'img-fluid', loading: 'lazy' }}
+                    </div>
+                </div>
+            {%- endif -%}
+            <div class="col-md-7">
+                <div class="faq__content">
+                    {%- if section.settings.subtitle -%}
+                      <p class="faq__subtitle">{{ section.settings.subtitle }}</p>
+                    {%- endif -%}
+                    {%- if section.settings.title -%}
+                        <h2 class="faq__title">{{ section.settings.title }}</h2>
+                    {%- endif -%}
+
+                    <div class="faq__blocks">
+                        <div class="accordion faq__accordion" id="faqAccordion">
+                            {%- for block in section.blocks -%}
+                                <div class="faq__item accordion-item">
+                                    <div class="accordion-header">
+                                        <button class="accordion-button {% if forloop.index != 1 %}collapsed{% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ forloop.index }}" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="collapse-{{ forloop.index }}">
+                                            {{ block.settings.question }}
+                                        </button>
+                                    </div>
+                                    <div id="collapse-{{ forloop.index }}" class="accordion-collapse collapse {% if forloop.first %}show{% endif %}" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            {{ block.settings.answer }}
+                                        </div>
+                                    </div>
+                                </div>
+                            {%- endfor -%}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% schema %}
+  {
+  "name": "FAQs",
+  "class": "faq",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "FREQUENTLY ASKED QUESTIONS"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "For the curious (or confused)"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "FAQ",
+      "type": "faq",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "WHAT EVEN IS ROOD?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQs"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

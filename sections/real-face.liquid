@@ -1,0 +1,64 @@
+<div class="real-face__wrapper">
+    <div class="section">
+        <div class="row g-3">
+            <div class="col-md-4">
+                <div class="real-face__item">
+                    {%- if section.settings.title -%}
+                        <h2 class="real-face__item-title">{{ section.settings.title }}</h2>
+                    {%- endif -%}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="real-face__item">
+                    {%- assign image = section.settings.image -%}
+                    {%- if image -%}
+                        <div class="real-face__image">
+                            {{ image | image_url: width: image.width | image_tag: class: 'real-face__img', loading: 'lazy' }}
+                        </div>
+                    {%- endif -%}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="real-face__item">
+                    {%- if section.settings.content -%}
+                        <div class="real-face__item-content">
+                            {{ section.settings.content }}
+                        </div>
+                    {%- endif -%}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% schema %}
+  {
+  "name": "Real Face",
+  "class": "real-face",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Our story started with a simple realisation."
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Real Face"
+    }
+  ]
+}  
+{% endschema %}

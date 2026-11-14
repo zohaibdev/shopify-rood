@@ -1,0 +1,93 @@
+<div class="section">
+    <div class="contact-form__wrapper">
+        {%- if section.settings.title -%}
+            <h1 class="contact-form__title">{{ section.settings.title }}</h1>
+        {%- endif -%}
+
+        <div class="contact-form__form">
+            {% form 'contact', id: 'ContactForm', class: 'contact-form-block' %}
+                <div class="contact-form__fields">
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="contact-form__field">
+                                <input type="text" id="ContactFormName" name="contact[name]" placeholder="Name" class="contact-form__input name-field" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="contact-form__field">
+                                <input type="tel" id="ContactFormPhone" name="contact[mobile]" placeholder="Mobile" class="contact-form__input">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="contact-form__field">
+                                 <input type="email" id="ContactFormEmail" name="contact[email]" placeholder="Email" class="contact-form__input" required>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="contact-form__field">
+                                <textarea id="ContactFormMessage" name="contact[body]" placeholder="Message" class="contact-form__textarea" required></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="contact-form__action">
+                                <button type="submit" class="th-btn contact-form__submit">
+                                    <span class="text">Send it</span>
+                                    <span class="icon">
+                                        <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M0 6.0127H10M10 6.0127L4.84375 0.512695M10 6.0127L4.84375 11.5127" stroke="currentColor" stroke-width="1.5"/>
+                                        </svg>
+                                    </span>
+                                </button>
+                                <small>By submitting, you’re okay with us getting back to you. You can opt out anytime.</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% if form.posted_successfully? %}
+                    <div class="form-success mt-4">
+                      <h4>Thanks for reaching out!</h4>
+                      <p>Your message has been successfully submitted. Our team will review it and respond shortly.</p>
+                    </div>
+                {% endif %}
+
+                {% if form.errors %}
+                    <div class="form-errors mt-4">
+                      {{ form.errors | default_errors }}
+                    </div>
+                {% endif %}
+            {% endform %}
+        </div>
+    </div>
+</div>
+
+
+{% schema %}
+  {
+  "name": "Contact Form",
+  "class": "contact-form",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "SLIDE INTO OUR dm’s (PROFESSIONALLY)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact Form"
+    }
+  ]
+}  
+{% endschema %}
+
+
+<script>
+    (function() {
+    document.querySelector(".name-field").addEventListener("input", function () {
+        this.value = this.value.replace(/[^a-zA-Z\s]/g, '');
+    });
+    })();
+</script>

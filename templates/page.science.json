@@ -1,0 +1,217 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "name": "Title",
+          "settings": {
+            "custom_class": "",
+            "text": "<h1>{{ closest.page.title }}</h1>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h2",
+            "font": "var(--font-primary--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "page-content": {
+          "type": "page-content",
+          "settings": {},
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "page-content"
+      ],
+      "disabled": true,
+      "settings": {
+        "content_direction": "column",
+        "gap": 32,
+        "color_scheme": "",
+        "padding-block-start": 40,
+        "padding-block-end": 80
+      }
+    },
+    "science_header_MrHxWf": {
+      "type": "science-header",
+      "name": "Science Header",
+      "settings": {
+        "title": "good science. no frills.",
+        "content": "The receipts. Without the lecture."
+      }
+    },
+    "formulas_CPcAnY": {
+      "type": "formulas",
+      "blocks": {
+        "formula_jpaXpA": {
+          "type": "formula",
+          "settings": {
+            "image": "shopify://shop_images/2.png",
+            "title": "Niacinamide (B3)",
+            "content": "<p>Balances skin tone, smooths texture.</p>"
+          }
+        },
+        "formula_AYAhKt": {
+          "type": "formula",
+          "settings": {
+            "image": "shopify://shop_images/1.png",
+            "title": "Hyaluronic Acid",
+            "content": "<p>Serious hydration without the greasy feel.</p>"
+          }
+        },
+        "formula_CThqw8": {
+          "type": "formula",
+          "settings": {
+            "image": "shopify://shop_images/wulfeai-260109144602.png",
+            "title": "Centella Asiatica",
+            "content": "<p>Calms redness and irritation.</p>"
+          }
+        },
+        "formula_pTmKhq": {
+          "type": "formula",
+          "settings": {
+            "image": "shopify://shop_images/wulfeai-260109144958.png",
+            "title": "Panthenol (B5)",
+            "content": "<p>Strengthens skin barrier and locks in moisture.</p>"
+          }
+        },
+        "formula_4yJdqf": {
+          "type": "formula",
+          "settings": {
+            "image": "shopify://shop_images/wulfeai-260109115550.png",
+            "title": "Vitamin C",
+            "content": "<p>Brightens dull skin and helps even things out.<br/><br/></p>"
+          }
+        },
+        "formula_e7CAmc": {
+          "type": "formula",
+          "settings": {
+            "image": "shopify://shop_images/wulfeai-260109143632.png",
+            "title": "Green Tea Extract",
+            "content": "<p>Antioxidant support to protect your skin.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "formula_jpaXpA",
+        "formula_AYAhKt",
+        "formula_CThqw8",
+        "formula_pTmKhq",
+        "formula_4yJdqf",
+        "formula_e7CAmc"
+      ],
+      "name": "Formulas",
+      "settings": {
+        "title": "The formulas do the heavy lifting. You just slap it on."
+      }
+    },
+    "real_face_z9mrDW": {
+      "type": "real-face",
+      "name": "Real Face",
+      "settings": {
+        "image": "shopify://shop_images/image-8.png",
+        "title": "BUILT FOR REAL FACES.",
+        "content": "<p>A lot of skincare assumes you’re clean-shaven, well-rested, and live somewhere with perfect lighting.</p><p>We didn’t.</p><p>Rood™ masks are cut and designed to work with beards, stubble, and real facial shapes – so the product actually touches skin where it needs to, instead of getting stuck in your beard.</p><p>That’s not marketing. That’s just thinking it through.</p>"
+      }
+    },
+    "no_brainer_CwK37d": {
+      "type": "no-brainer",
+      "blocks": {
+        "icon_box_XTmcni": {
+          "type": "icon_box",
+          "settings": {
+            "title": "Skin looks fresher in 15 minutes"
+          }
+        },
+        "icon_box_B7B3Uq": {
+          "type": "icon_box",
+          "settings": {
+            "title": "More even tone and texture"
+          }
+        },
+        "icon_box_LUFidi": {
+          "type": "icon_box",
+          "settings": {
+            "title": "Puffiness knocked back"
+          }
+        },
+        "icon_box_JBBkg6": {
+          "type": "icon_box",
+          "settings": {
+            "title": "Skin feels settled, not stripped"
+          }
+        },
+        "icon_box_XH8gKm": {
+          "type": "icon_box",
+          "settings": {
+            "title": "Less “you look tired” comments"
+          }
+        },
+        "icon_box_7t9hRB": {
+          "type": "icon_box",
+          "settings": {
+            "title": "No greasy residue"
+          }
+        }
+      },
+      "block_order": [
+        "icon_box_XTmcni",
+        "icon_box_B7B3Uq",
+        "icon_box_LUFidi",
+        "icon_box_JBBkg6",
+        "icon_box_XH8gKm",
+        "icon_box_7t9hRB"
+      ],
+      "name": "No-Brainer Subscription",
+      "settings": {
+        "versions": "version_one",
+        "extra_classes": "title-dark",
+        "title": "what you’ll notice:"
+      }
+    },
+    "subscribe_banner_drh3cW": {
+      "type": "subscribe-banner",
+      "name": "Subscribe Banner",
+      "settings": {
+        "image": "shopify://shop_images/Adam_Reynolds_Rood_Skin.webp",
+        "title": "Sort your mug out.",
+        "button_text": "SHOP NOW",
+        "button_link": "shopify://pages/shop"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "science_header_MrHxWf",
+    "formulas_CPcAnY",
+    "real_face_z9mrDW",
+    "no_brainer_CwK37d",
+    "subscribe_banner_drh3cW"
+  ]
+}

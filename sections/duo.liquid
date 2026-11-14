@@ -1,0 +1,254 @@
+<div class="section">
+  <div class="duo__title{% if section.settings.subtitle != blank %} duo__title--has-subtitle{% endif %}">
+    <h2>{{ section.settings.title }}</h2>
+    {%- if section.settings.subtitle != blank -%}
+      <p class="duo__subtitle">{{ section.settings.subtitle | escape }}</p>
+    {%- endif -%}
+  </div>
+  <div class="duo__products">
+    <div class="row g-5">
+      <div class="col-md-6">
+        <div class="duo__product-item">
+          <div class="duo__product-image">
+            {%- render 'duo-media',
+              image: section.settings.first_product_image,
+              video: section.settings.first_product_video
+            -%}
+          </div>
+          <h3>{{ section.settings.first_product_title }}</h3>
+          <div class="no-brainer__icon-blocks">
+            {%- for block in section.blocks -%}
+              {%- case block.type -%}
+                {%- when 'first_product_features' -%}
+                  <div class="no-brainer__icon-block">
+                    <div class="no-brainer__icon-block-icon">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14.8313 9.16754L11.999 0L9.16671 9.16754H0L7.41665 14.8325L4.58434 24L11.999 18.3351L19.4157 24L16.5834 14.8325L24 9.16754H14.8313Z" fill="black"/>
+                      </svg>
+                    </div>
+                    <div class="no-brainer__icon-block-content">
+                      <h5 class="no-brainer__icon-block-title">{{ block.settings.text }}</h5>
+                    </div>
+                  </div>
+              {%- endcase -%}
+            {%- endfor -%}
+          </div>
+          <div class="duo__faqs">
+            <div class="accordion faq__accordion" id="faqAccordion1">
+              {%- for block in section.blocks -%}
+                {%- case block.type -%}
+                  {%- when 'first_product_faqs' -%}
+                    <div class="faq__item accordion-item">
+                      <div class="accordion-header">
+                        <button
+                          class="accordion-button {% if forloop.index != 1 %}collapsed{% endif %}"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#collapse-1-{{ forloop.index }}"
+                          aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
+                          aria-controls="collapse-1-{{ forloop.index }}"
+                        >
+                          {{ block.settings.question }}
+                        </button>
+                      </div>
+                      <div
+                        id="collapse-1-{{ forloop.index }}"
+                        class="accordion-collapse collapse {% if forloop.first %}show{% endif %}"
+                        data-bs-parent="#faqAccordion1"
+                      >
+                        <div class="accordion-body">
+                          {{ block.settings.answer }}
+                        </div>
+                      </div>
+                    </div>
+                {%- endcase -%}
+              {%- endfor -%}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="duo__product-item">
+          <div class="duo__product-image">
+            {%- render 'duo-media',
+              image: section.settings.second_product_image,
+              video: section.settings.second_product_video
+            -%}
+          </div>
+          <h3>{{ section.settings.second_product_title }}</h3>
+          <div class="no-brainer__icon-blocks">
+            {%- for block in section.blocks -%}
+              {%- case block.type -%}
+                {%- when 'second_product_features' -%}
+                  <div class="no-brainer__icon-block">
+                    <div class="no-brainer__icon-block-icon">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14.8313 9.16754L11.999 0L9.16671 9.16754H0L7.41665 14.8325L4.58434 24L11.999 18.3351L19.4157 24L16.5834 14.8325L24 9.16754H14.8313Z" fill="black"/>
+                      </svg>
+                    </div>
+                    <div class="no-brainer__icon-block-content">
+                      <h5 class="no-brainer__icon-block-title">{{ block.settings.text }}</h5>
+                    </div>
+                  </div>
+              {%- endcase -%}
+            {%- endfor -%}
+          </div>
+          <div class="duo__faqs">
+            <div class="accordion faq__accordion" id="faqAccordion2">
+              {%- for block in section.blocks -%}
+                {%- case block.type -%}
+                  {%- when 'second_product_faqs' -%}
+                    <div class="faq__item accordion-item">
+                      <div class="accordion-header">
+                        <button
+                          class="accordion-button {% if forloop.index != 1 %}collapsed{% endif %}"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#collapse-2-{{ forloop.index }}"
+                          aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
+                          aria-controls="collapse-2-{{ forloop.index }}"
+                        >
+                          {{ block.settings.question }}
+                        </button>
+                      </div>
+                      <div
+                        id="collapse-2-{{ forloop.index }}"
+                        class="accordion-collapse collapse {% if forloop.first %}show{% endif %}"
+                        data-bs-parent="#faqAccordion2"
+                      >
+                        <div class="accordion-body">
+                          {{ block.settings.answer }}
+                        </div>
+                      </div>
+                    </div>
+                {%- endcase -%}
+              {%- endfor -%}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "The Dynamic Duo.",
+  "class": "duo",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "the dynamic duo."
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "image_picker",
+      "id": "first_product_image",
+      "label": "First Product Image"
+    },
+    {
+      "type": "video",
+      "id": "first_product_video",
+      "label": "First Product Video",
+      "info": "Autoplays muted on loop. The product image shows until it plays and if it can't."
+    },
+    {
+      "type": "text",
+      "id": "first_product_title",
+      "label": "First Product Title",
+      "default": "SHEET MASK"
+    },
+    {
+      "type": "image_picker",
+      "id": "second_product_image",
+      "label": "Second Product Image"
+    },
+    {
+      "type": "video",
+      "id": "second_product_video",
+      "label": "Second Product Video",
+      "info": "Autoplays muted on loop. The product image shows until it plays and if it can't."
+    },
+    {
+      "type": "text",
+      "id": "second_product_title",
+      "label": "Second Product Title",
+      "default": "EYE MASK"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "First Product Features",
+      "type": "first_product_features",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    },
+    {
+      "name": "First Product FAQ's",
+      "type": "first_product_faqs",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    },
+    {
+      "name": "Second Product Features",
+      "type": "second_product_features",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    },
+    {
+      "name": "Second Product FAQ's",
+      "type": "second_product_faqs",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "The Dynamic Duo."
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

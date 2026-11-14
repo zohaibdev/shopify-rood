@@ -1,0 +1,171 @@
+{%- liquid
+  assign is_intro = false
+  if section.settings.layout == 'intro'
+    assign is_intro = true
+  endif
+-%}
+
+<div class="story__wrapper{% if is_intro %} story__wrapper--intro{% endif %}">
+    <div class="section">
+        {%- capture primary_content -%}
+        <div class="story__content story__content--primary">
+            {%- if section.settings.primary_title -%}
+              {%- if is_intro -%}
+                <h2 class="story__title">{{ section.settings.primary_title }}</h2>
+              {%- else -%}
+                <p class="story__title">{{ section.settings.primary_title }}</p>
+              {%- endif -%}
+            {%- endif -%}
+            {%- if section.settings.primary_content -%}
+              <div class="story__text">
+                {{ section.settings.primary_content }} 
+              </div>
+            {%- endif -%}
+            {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+              <a href="{{ section.settings.button_link }}" class="th-btn story__button">{{ section.settings.button_label | escape }}</a>
+            {%- endif -%}
+        </div>
+        {%- endcapture -%}
+
+        {%- if is_intro -%}
+          {%- comment -%} Intro: the first two tiles flank the copy, offset vertically. {%- endcomment -%}
+          <div class="story__intro">
+            {%- if section.blocks[0] -%}
+              {%- render 'story-tile', block: section.blocks[0], class: 'story__intro-tile story__intro-tile--start' -%}
+            {%- endif -%}
+            {{ primary_content }}
+            {%- if section.blocks[1] -%}
+              {%- render 'story-tile', block: section.blocks[1], class: 'story__intro-tile story__intro-tile--end' -%}
+            {%- endif -%}
+          </div>
+        {%- else -%}
+          {{ primary_content }}
+          <div class="story__images">
+              <div class="row g-3 justify-content-center">
+                  {%- for block in section.blocks -%}
+                      {%- render 'story-tile', block: block, class: 'col-md-4' -%}
+                  {%- endfor -%}
+              </div>
+          </div>
+        {%- endif -%}
+        {%- if section.settings.secondary_title or section.settings.secondary_content -%}
+          <div class="story__content story__content--secondary">
+            {%- if section.settings.secondary_title -%}
+              <p class="story__title">{{ section.settings.secondary_title }}</p>
+            {%- endif -%}
+            {%- if section.settings.secondary_content -%}
+              <div class="story__text">
+                  {{ section.settings.secondary_content }} 
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+    </div>
+</div>
+
+{%- liquid
+  # The layout loads Lity for the story template only; video tiles elsewhere need it here.
+  assign has_video = false
+  for block in section.blocks
+    if block.settings.video != blank
+      assign has_video = true
+      break
+    endif
+  endfor
+-%}
+{%- if has_video and template.suffix != 'story' -%}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lity/2.4.1/lity.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lity/2.4.1/lity.min.js" defer></script>
+  <script>
+    window.playVideo = window.playVideo || function (url) { return lity(url); };
+  </script>
+{%- endif -%}
+
+
+{% schema %}
+  {
+  "name": "Story",
+  "class": "story",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        {
+          "value": "default",
+          "label": "Default"
+        },
+        {
+          "value": "intro",
+          "label": "Intro (copy between two video tiles)"
+        }
+      ],
+      "default": "default",
+      "info": "Intro shows the first two blocks beside the copy."
+    },
+    {
+      "type": "text",
+      "id": "primary_title",
+      "label": "Primary Title",
+      "default": "Our story started with a simple realisation."
+    },
+    {
+      "type": "richtext",
+      "id": "primary_content",
+      "label": "Primary Content"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_title",
+      "label": "Secondary Title",
+      "default": "FACE GEAR, NOT SKINCARE."
+    },
+    {
+      "type": "richtext",
+      "id": "secondary_content",
+      "label": "Secondary Content"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Images",
+      "type": "images",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Story"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

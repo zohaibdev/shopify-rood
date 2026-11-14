@@ -1,0 +1,54 @@
+{%- assign image = section.settings.image -%}
+<div class="section">
+  <div class="subscribe-banner__wrapper" style="background-image: url('{{ image | image_url: width: image.width }}');">
+    <div class="subscribe-banner__content">
+      {%- if section.settings.title -%}
+        <h2 class="subscribe-banner__title">{{ section.settings.title }}</h2>
+      {%- endif -%}
+      {%- if section.settings.button_link -%}
+        <div class="subscribe-banner__action">
+          <a href="{{ section.settings.button_link }}" class="th-btn">
+            <span class="text">{{ section.settings.button_text }}</span>
+          </a>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Subscribe Banner",
+  "class": "subscribe-banner",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "SUBSCRIBE + WIN $10,000"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "SUBSCRIBE + WIN $10,000"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Subscribe Banner"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,647 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "product_list_fa6P9H": {
+      "type": "product-list",
+      "blocks": {
+        "static-header": {
+          "type": "_product-list-content",
+          "name": "t:names.header",
+          "static": true,
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": false,
+            "horizontal_alignment": "space-between",
+            "vertical_alignment": "flex-end",
+            "align_baseline": true,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_list_text_YFtzcL": {
+              "type": "_product-list-text",
+              "name": "t:names.collection_title",
+              "settings": {
+                "text": "<h3>{{ closest.collection.title }}</h3>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_list_button_MWeP9V": {
+              "type": "_product-list-button",
+              "name": "t:names.product_list_button",
+              "settings": {
+                "label": "View all",
+                "open_in_new_tab": false,
+                "style_class": "link",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_list_text_YFtzcL",
+            "product_list_button_MWeP9V"
+          ]
+        },
+        "static-product-card": {
+          "type": "_product-card",
+          "name": "t:names.product_card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 4,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_card_gallery_677WP3": {
+              "type": "_product-card-gallery",
+              "name": "t:names.product_card_media",
+              "settings": {
+                "image_ratio": "adapt",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title_YXxMTj": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price_JQzVV4": {
+              "type": "price",
+              "name": "t:names.product_price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h6",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "color": "var(--color-foreground)",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_card_gallery_677WP3",
+            "product_title_YXxMTj",
+            "price_JQzVV4"
+          ]
+        }
+      },
+      "disabled": true,
+      "name": "Featured collection",
+      "settings": {
+        "collection": "all",
+        "layout_type": "grid",
+        "carousel_on_mobile": false,
+        "max_products": 8,
+        "columns": 4,
+        "mobile_columns": "2",
+        "mobile_card_size": "60cqw",
+        "columns_gap": 8,
+        "rows_gap": 24,
+        "icons_style": "arrow",
+        "icons_shape": "none",
+        "section_width": "page-width",
+        "horizontal_alignment": "flex-start",
+        "gap": 28,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "hero_kAGHcy": {
+      "type": "hero",
+      "name": "Hero",
+      "settings": {
+        "image": "shopify://shop_images/hero.jpg",
+        "video": "shopify://files/videos/Rood Banner AI.mp4",
+        "flag_icon": "shopify://shop_images/Rood_Icon_FreshlyWashedTee.svg",
+        "title": "LOOK LESS COOKED.",
+        "content": "Rood™ face masks and eye masks for blokes who want to look fresh for whatever’s next.",
+        "button_text": "SHOP ROOD™",
+        "button_link": "shopify://pages/shop",
+        "dark_mode": true
+      }
+    },
+    "zero_effort_aDXFaR": {
+      "type": "zero-effort",
+      "blocks": {
+        "block_WgT8KE": {
+          "type": "block",
+          "settings": {
+            "title": "15 minutes.",
+            "content": "Quick enough before work, a date, a wedding or whatever else is coming up."
+          }
+        },
+        "block_4ig6JA": {
+          "type": "block",
+          "settings": {
+            "title": "TWO MASKS.",
+            "content": "Face sorted. Eyes sorted. Different jobs, one bundle, so you’ve got the right one when you need it."
+          }
+        },
+        "block_7qyTUh": {
+          "type": "block",
+          "settings": {
+            "title": "PROPER SKINCARE.",
+            "content": "Korean-grade formulas with ingredients that actually earn their spot."
+          }
+        },
+        "block_RWGjid": {
+          "type": "block",
+          "settings": {
+            "title": "BUILT FOR BLOKES.",
+            "content": "Beard-considerate, low effort and easy to fit around real life."
+          }
+        }
+      },
+      "block_order": [
+        "block_WgT8KE",
+        "block_4ig6JA",
+        "block_7qyTUh",
+        "block_RWGjid"
+      ],
+      "name": "Zero Effort",
+      "settings": {
+        "title": "BE READY FOR WHATEVER’S NEXT.",
+        "button_text": "",
+        "button_link": ""
+      }
+    },
+    "monthly_mug_DejTxW": {
+      "type": "monthly-mug",
+      "disabled": true,
+      "name": "Monthly Mug",
+      "settings": {
+        "title": "Your monthly mug reset",
+        "subtitle": "Subscribe + ENTER $10,000 GIVEAWAY",
+        "content": "Monthly face masks and eye masks for fellas who can’t be stuffed with skincare. Pick your plan and we’ll keep you sorted. Cancel anytime.",
+        "button_text": "ADD TO CART",
+        "checklist_namespace": "custom",
+        "checklist_key": "includes",
+        "excludes_checklist_key": "excludes",
+        "cart_drawer_section_id": "cart-drawer",
+        "cart_drawer_container_selector": "#shopify-section-cart-drawer",
+        "trail_message": "Not ready for monthly? All good.",
+        "tax_message": "",
+        "switch_gallery_on_plan_change": false
+      }
+    },
+    "subscribe_banner_eh64Wx": {
+      "type": "subscribe-banner",
+      "name": "Subscribe Banner",
+      "settings": {
+        "image": "shopify://shop_images/Rood_boy_rood.skin_--_explore_explorepage_viral_skincare.jpg",
+        "title": "skincare for fellas who have better things to do.",
+        "button_text": "SHOP NOW",
+        "button_link": "shopify://pages/shop"
+      }
+    },
+    "no_brainer_m4nEhi": {
+      "type": "no-brainer",
+      "blocks": {
+        "icon_box_YpdKHJ": {
+          "type": "icon_box",
+          "settings": {
+            "title": "STAY STOCKED FOR WHATEVER’S NEXT.",
+            "content": "Because weddings, dates and random plans have a habit of sneaking up on you."
+          }
+        },
+        "icon_box_yyXCcc": {
+          "type": "icon_box",
+          "settings": {
+            "title": "YOU’LL FORGET TO REORDER. WE’VE GOT IT.",
+            "content": "They turn up every month. One less thing to remember."
+          }
+        },
+        "icon_box_kbCTGW": {
+          "type": "icon_box",
+          "settings": {
+            "title": "SKIP, PAUSE OR CANCEL WHENEVER.",
+            "content": "No lock-ins. No awkward breakup conversation."
+          }
+        }
+      },
+      "block_order": [
+        "icon_box_YpdKHJ",
+        "icon_box_yyXCcc",
+        "icon_box_kbCTGW"
+      ],
+      "name": "No-Brainer Subscription",
+      "settings": {
+        "versions": "version_one",
+        "extra_classes": "title-center title-dark",
+        "title": "a No-Brainer Subscription."
+      }
+    },
+    "testimonials_Ek7QQA": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonials_eJVEkD": {
+          "type": "testimonials",
+          "settings": {
+            "image": "shopify://shop_images/Jesse_Arthars_Rood_Skin_400ec940-3349-4f42-9dc8-26d09793a495.webp",
+            "name": "Jesse Arthars",
+            "on_hover_name": "",
+            "position": "NRL Player",
+            "review": ""
+          }
+        },
+        "testimonials_FJejC7": {
+          "type": "testimonials",
+          "settings": {
+            "image": "shopify://shop_images/A1DF24B3-B13E-425C-B98D-FB58A08EA89E.jpg",
+            "name": "JAMES FRENCH",
+            "on_hover_name": "",
+            "position": "Chippie",
+            "review": ""
+          }
+        },
+        "testimonials_VxmRVp": {
+          "type": "testimonials",
+          "settings": {
+            "image": "shopify://shop_images/Kotoni_Staggs_Rood_Skin_f8bce219-4f37-4f72-a90d-89fbd09bba30.webp",
+            "name": "kotoni staggs",
+            "on_hover_name": "",
+            "position": "NRL PLAYER",
+            "review": ""
+          }
+        }
+      },
+      "block_order": [
+        "testimonials_eJVEkD",
+        "testimonials_FJejC7",
+        "testimonials_VxmRVp"
+      ],
+      "name": "Testimonials",
+      "settings": {
+        "title": "FOR BLOKES WHO’VE GOT SOMEWHERE TO BE.",
+        "content": "Big days, big nights, work things, weekends and everything in between. Look fresh without making skincare a whole ordeal."
+      }
+    },
+    "mask_tabs_xdiddX": {
+      "type": "mask-tabs",
+      "blocks": {
+        "sheet_mask_pointer_Qxm3kd": {
+          "type": "sheet_mask_pointer",
+          "settings": {
+            "title": "Hyaluronic Acid",
+            "subtitle": "Long-lasting hydration",
+            "position_x": 5,
+            "position_y": 15,
+            "direction": "row-reverse"
+          }
+        },
+        "sheet_mask_pointer_8ebbWY": {
+          "type": "sheet_mask_pointer",
+          "settings": {
+            "title": "Centella",
+            "subtitle": "Calms irritation & redness",
+            "position_x": 5,
+            "position_y": 43,
+            "direction": "row-reverse"
+          }
+        },
+        "sheet_mask_pointer_MTTWCY": {
+          "type": "sheet_mask_pointer",
+          "settings": {
+            "title": "Panthenol (B5)",
+            "subtitle": "Strengthens skin barrier",
+            "position_x": 10,
+            "position_y": 75,
+            "direction": "row-reverse"
+          }
+        },
+        "sheet_mask_pointer_cyCjmB": {
+          "type": "sheet_mask_pointer",
+          "settings": {
+            "title": "Niacinamide (B3)",
+            "subtitle": "Smooths texture, balances tone",
+            "position_x": 65,
+            "position_y": 14,
+            "direction": "row"
+          }
+        },
+        "sheet_mask_pointer_CLDmGy": {
+          "type": "sheet_mask_pointer",
+          "settings": {
+            "title": "VITAMIN C",
+            "subtitle": "Brightens tired-looking skin",
+            "position_x": 69,
+            "position_y": 41,
+            "direction": "row"
+          }
+        },
+        "sheet_mask_pointer_LHEQnj": {
+          "type": "sheet_mask_pointer",
+          "settings": {
+            "title": "Green Tea Extract",
+            "subtitle": "Antioxidant protection & soothing",
+            "position_x": 70,
+            "position_y": 65,
+            "direction": "row"
+          }
+        },
+        "eye_mask_pointer_qGAhk6": {
+          "type": "eye_mask_pointer",
+          "settings": {
+            "title": "Niacinamide (B3)",
+            "subtitle": "Brightens dark under-eyes",
+            "position_x": 10,
+            "position_y": 15,
+            "direction": "row-reverse"
+          }
+        },
+        "eye_mask_pointer_thLD7t": {
+          "type": "eye_mask_pointer",
+          "settings": {
+            "title": "Fast results",
+            "subtitle": "Noticeable in 15 minutes",
+            "position_x": 8,
+            "position_y": 40,
+            "direction": "row-reverse"
+          }
+        },
+        "eye_mask_pointer_yLQ4kL": {
+          "type": "eye_mask_pointer",
+          "settings": {
+            "title": "HYDROGEL PATCH",
+            "subtitle": "Stays put for better results",
+            "position_x": 9,
+            "position_y": 73,
+            "direction": "row-reverse"
+          }
+        },
+        "eye_mask_pointer_gjk7py": {
+          "type": "eye_mask_pointer",
+          "settings": {
+            "title": "CAFFEINE",
+            "subtitle": "Reduces puffiness and bags",
+            "position_x": 60,
+            "position_y": 15,
+            "direction": "row"
+          }
+        },
+        "eye_mask_pointer_T9tJCh": {
+          "type": "eye_mask_pointer",
+          "settings": {
+            "title": "Glycerin",
+            "subtitle": "Locks in moisture",
+            "position_x": 69,
+            "position_y": 73,
+            "direction": "row"
+          }
+        },
+        "eye_mask_pointer_6aTm7C": {
+          "type": "eye_mask_pointer",
+          "settings": {
+            "title": "Cooling relief",
+            "subtitle": "Instant refresh on contact",
+            "position_x": 65,
+            "position_y": 47,
+            "direction": "row"
+          }
+        }
+      },
+      "block_order": [
+        "sheet_mask_pointer_Qxm3kd",
+        "sheet_mask_pointer_8ebbWY",
+        "sheet_mask_pointer_MTTWCY",
+        "sheet_mask_pointer_cyCjmB",
+        "sheet_mask_pointer_CLDmGy",
+        "sheet_mask_pointer_LHEQnj",
+        "eye_mask_pointer_qGAhk6",
+        "eye_mask_pointer_thLD7t",
+        "eye_mask_pointer_yLQ4kL",
+        "eye_mask_pointer_gjk7py",
+        "eye_mask_pointer_T9tJCh",
+        "eye_mask_pointer_6aTm7C"
+      ],
+      "name": "Mask Tabs",
+      "settings": {
+        "title": "KOREAN-GRADE FORMULA",
+        "subtitle": "Proper skincare ingredients. Ask your girlfriend, she’ll know.",
+        "sheet_mask_video": "shopify://files/videos/Rood_SheetMask2.mp4",
+        "eye_mask_video": "shopify://files/videos/eye 2.mp4"
+      }
+    },
+    "story_Pl4nRd": {
+      "type": "story",
+      "blocks": {
+        "images_yjzxhR": {
+          "type": "images",
+          "settings": {
+            "image": "shopify://shop_images/story-1.png",
+            "video": "shopify://files/videos/AQPinRmRwr8TSvZEVqtstG1AKPyybtTflZ4onkOrI0RYpbalfBgkh28hLbI4Kl63YYsgaiHTBKiOej1rSTFtvqbYrZChZdrzdzDcCfw.mp4"
+          }
+        },
+        "images_dEpaBx": {
+          "type": "images",
+          "settings": {
+            "image": "shopify://shop_images/story-2.png",
+            "video": "shopify://files/videos/We Bought a Car for Marketing.mp4"
+          }
+        }
+      },
+      "block_order": [
+        "images_yjzxhR",
+        "images_dEpaBx"
+      ],
+      "name": "Story",
+      "settings": {
+        "layout": "intro",
+        "primary_title": "THIS WASN’T REALLY THE PLAN.",
+        "primary_content": "<p>We just wanted skincare we’d actually use. Simple, effective and easy to fit around real life. Somewhere along the way, that became Rood™.</p><p>Glad you found us.</p><p>Ben, Jordy + Reyno</p>",
+        "button_label": "OUR STORY",
+        "button_link": "shopify://pages/our-story",
+        "secondary_title": "",
+        "secondary_content": ""
+      }
+    },
+    "faq_xtCREX": {
+      "type": "faq",
+      "blocks": {
+        "faq_xL8bjw": {
+          "type": "faq",
+          "settings": {
+            "question": "WHAT EVEN IS ROOD?",
+            "answer": "<p>Face + eye masks for blokes who want to look less cooked without doing… much. Two products. Zero drama. Works while you get on with your day.</p>"
+          }
+        },
+        "faq_bwjA3h": {
+          "type": "faq",
+          "settings": {
+            "question": "WHY MASKS?",
+            "answer": "<p>Because serums, droppers, rollers and “10-step energy rituals” are… a lot. Masks are quick, effective, and don’t require you to learn skincare algebra.</p>"
+          }
+        },
+        "faq_GKJQiY": {
+          "type": "faq",
+          "settings": {
+            "question": "How often should I use it?",
+            "answer": "<p>2–4 times a week depending how cooked you look.</p>"
+          }
+        },
+        "faq_4wj4Tn": {
+          "type": "faq",
+          "settings": {
+            "question": "Why a subscription?",
+            "answer": "<p>Because looking after your mug shouldn’t depend on your memory. It turns up, you use it, you look fresh. Easy.</p>"
+          }
+        },
+        "faq_9w7kxR": {
+          "type": "faq",
+          "settings": {
+            "question": "CAN I CANCEL AT ANYTIME?",
+            "answer": "<p>Of course. We’re not your phone plan.</p>"
+          }
+        },
+        "faq_MQHCCP": {
+          "type": "faq",
+          "settings": {
+            "question": "Is it made in Korea?",
+            "answer": "<p>Formulated with Korean skincare science, produced to high standards. Translation: good enough that she’ll steal one.</p>"
+          }
+        },
+        "faq_9qCTfc": {
+          "type": "faq",
+          "settings": {
+            "question": "Is it safe for sensitive skin?",
+            "answer": "<p>Yep. Gentle formula. But if your skin throws tantrums easily, patch test first. We’re good, but we’re not psychic.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_xL8bjw",
+        "faq_bwjA3h",
+        "faq_GKJQiY",
+        "faq_4wj4Tn",
+        "faq_9w7kxR",
+        "faq_MQHCCP",
+        "faq_9qCTfc"
+      ],
+      "name": "FAQs",
+      "settings": {
+        "image": "shopify://shop_images/Ren_Car_2.webp",
+        "title": "FREQUENTLY ASKED QUESTIONS",
+        "subtitle": "For the curious (or confused)"
+      }
+    },
+    "join_rood_WhT7Ey": {
+      "type": "join-rood",
+      "name": "Join Rood",
+      "settings": {
+        "title": "JOIN THE ROODIES",
+        "content": "A newsletter, in 2026? What a time to be alive."
+      }
+    }
+  },
+  "order": [
+    "product_list_fa6P9H",
+    "hero_kAGHcy",
+    "zero_effort_aDXFaR",
+    "monthly_mug_DejTxW",
+    "subscribe_banner_eh64Wx",
+    "no_brainer_m4nEhi",
+    "testimonials_Ek7QQA",
+    "mask_tabs_xdiddX",
+    "story_Pl4nRd",
+    "faq_xtCREX",
+    "join_rood_WhT7Ey"
+  ]
+}

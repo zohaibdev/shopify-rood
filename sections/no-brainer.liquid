@@ -1,0 +1,105 @@
+{%- assign version = 'one' -%}
+
+{%- if section.settings.versions == 'version_one' -%}
+    {%- assign version = 'one' -%}
+{%- elsif section.settings.versions == 'version_two' -%}
+    {%- assign version = 'two' -%}
+{%- endif -%}
+
+
+<div class="no-brainer__wrapper no-brainer__wrapper--{{ version }} {{ section.settings.extra_classes }}">
+    <div class="section">
+        {%- if section.settings.title -%}
+            <div class="no-brainer__content">
+                <h4>{{ section.settings.title }}</h4>
+            </div>
+        {%- endif -%}
+        <div class="no-brainer__icon-blocks">
+            <div class="row g-lg-4 g-3">
+                {%- for block in section.blocks -%}
+                    <div class="col-md-4">
+                        <div class="no-brainer__icon-block{% if block.settings.content != blank %} no-brainer__icon-block--has-content{% endif %}" {{ block.shopify_attributes }}>
+                            <div class="no-brainer__icon-block-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <path d="M14.8313 9.16754L11.999 0L9.16671 9.16754H0L7.41665 14.8325L4.58434 24L11.999 18.3351L19.4157 24L16.5834 14.8325L24 9.16754H14.8313Z" fill="black"/>
+                                </svg>
+                            </div>
+                            <div class="no-brainer__icon-block-content">
+                                <h5 class="no-brainer__icon-block-title">{{ block.settings.title }}</h5>
+                                {%- if block.settings.content != blank -%}
+                                    <p class="no-brainer__icon-block-text">{{ block.settings.content | escape | newline_to_br }}</p>
+                                {%- endif -%}
+                            </div>
+                        </div>
+                    </div>
+                {%- endfor -%}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+  {
+  "name": "No-Brainer Subscription",
+  "class": "no-brainer",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "radio",
+      "id": "versions",
+      "label": "Versions",
+      "options": [
+        {
+          "value": "version_one",
+          "label": "Version One"
+        },
+        {
+          "value": "version_two",
+          "label": "Version Two"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "extra_classes",
+      "label": "Extra Classes"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "a No-Brainer Subscription."
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Icon Box",
+      "type": "icon_box",
+      "settings": [
+        {
+          "type": "html",
+          "id": "title",
+          "label": "Title",
+          "default": "YOU’LL ACTUALLY BE CONSISTENT FOR ONCE."
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "No-Brainer Subscription"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

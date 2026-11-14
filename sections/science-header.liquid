@@ -1,0 +1,43 @@
+<div class="section">
+  <div class="science-header__content">
+    {%- if section.settings.title -%}
+      <h2 class="science-header__title">{{ section.settings.title }}</h2>
+    {%- endif -%}
+    {%- if section.settings.content -%}
+      <p class="science-header__text">{{ section.settings.content }}</p>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+  {
+  "name": "Science Header",
+  "class": "science-header",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "good science. no frills."
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "Content",
+      "default": "The receipts. Without the lecture."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Science Header"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

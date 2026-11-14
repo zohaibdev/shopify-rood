@@ -1,0 +1,185 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "name": "Title",
+          "settings": {
+            "custom_class": "",
+            "text": "<h1>{{ closest.page.title }}</h1>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h2",
+            "font": "var(--font-primary--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "page-content": {
+          "type": "page-content",
+          "settings": {},
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "page-content"
+      ],
+      "disabled": true,
+      "settings": {
+        "content_direction": "column",
+        "gap": 32,
+        "color_scheme": "",
+        "padding-block-start": 40,
+        "padding-block-end": 80
+      }
+    },
+    "faq_full_width_ykWzYW": {
+      "type": "faq-full-width",
+      "blocks": {
+        "faq_8jKqiB": {
+          "type": "faq",
+          "settings": {
+            "question": "What even is Rood?",
+            "answer": "<p>Face + eye masks for blokes who want to look less cooked without doing… much. Two products. Zero drama. Works while you get on with your day.</p>"
+          }
+        },
+        "faq_ACUpfH": {
+          "type": "faq",
+          "settings": {
+            "question": "How does it work?",
+            "answer": "<p>Slap it on for 15 minutes. Peel it off. Look noticeably fresher. Repeat a couple times a week. That’s it, no 47-step routine or cucumber slices required.</p>"
+          }
+        },
+        "faq_4FpjmU": {
+          "type": "faq",
+          "settings": {
+            "question": "Why masks?",
+            "answer": "<p>Because serums, droppers, rollers and “10-step energy rituals” are… a lot. Masks are quick, effective, and don’t require you to learn skincare algebra.</p>"
+          }
+        },
+        "faq_jANHKr": {
+          "type": "faq",
+          "settings": {
+            "question": "Do I need to do anything while it's on?",
+            "answer": "<p>Nope. Mow the lawn. Make a toastie. Scroll footy memes. It just works in the background.</p>"
+          }
+        },
+        "faq_eA8jK4": {
+          "type": "faq",
+          "settings": {
+            "question": "WHY A SUBSCRIPTION?",
+            "answer": "<p>Because you’ll forget. The subscription keeps your mug sorted without having to think about re-ordering or running out right before you need it.</p>"
+          }
+        },
+        "faq_hhYaia": {
+          "type": "faq",
+          "settings": {
+            "question": "How often should I use it?",
+            "answer": "<p>2–4 times a week depending how cooked you are / how smug you’d like to look.</p>"
+          }
+        },
+        "faq_zRhR7w": {
+          "type": "faq",
+          "settings": {
+            "question": "Is it for guys with beards?",
+            "answer": "<p>Yep. Rood is beard-considerate. Use the top half if you're rocking stubble or a full carpet.</p>"
+          }
+        },
+        "faq_rqV9i3": {
+          "type": "faq",
+          "settings": {
+            "question": "Do these actually work?",
+            "answer": "<p>Yep. Packed with legit actives like Hyaluronic Acid, Niacinamide, Panthenol, Vitamin C + Centella. Proper formula, not scented water.</p>"
+          }
+        },
+        "faq_eBfdPc": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I cancel anytime?",
+            "answer": "<p>Of course. We’re not your phone plan.</p>"
+          }
+        },
+        "faq_c74kn8": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I buy one-off instead of subscribing?",
+            "answer": "<p>Yeah, there’s a one-off trial pack, but if you actually want to look less cooked long-term, the subscription’s the move.</p>"
+          }
+        },
+        "faq_DQfPmT": {
+          "type": "faq",
+          "settings": {
+            "question": "Will my mates roast me?",
+            "answer": "<p>Maybe the first time. Then they’ll try it... and ask for the link.</p>"
+          }
+        },
+        "faq_fJimAh": {
+          "type": "faq",
+          "settings": {
+            "question": "Is it made in Korea?",
+            "answer": "<p>Formulated with Korean skincare science, produced to high standards. Translation: good enough that she’ll steal one.</p>"
+          }
+        },
+        "faq_dQEbGB": {
+          "type": "faq",
+          "settings": {
+            "question": "Is it safe for sensitive skin?",
+            "answer": "<p>Yep. Gentle formula. But if your skin throws tantrums easily, patch test first. We’re good, but we’re not psychic.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_8jKqiB",
+        "faq_ACUpfH",
+        "faq_4FpjmU",
+        "faq_jANHKr",
+        "faq_eA8jK4",
+        "faq_hhYaia",
+        "faq_zRhR7w",
+        "faq_rqV9i3",
+        "faq_eBfdPc",
+        "faq_c74kn8",
+        "faq_DQfPmT",
+        "faq_fJimAh",
+        "faq_dQEbGB"
+      ],
+      "name": "FAQs Full Width",
+      "settings": {
+        "image": "shopify://shop_images/Jesse_Arthars_Rood_Skin_Skincare_for_Men.webp",
+        "title": "FAQ's",
+        "subtitle": "",
+        "footer_title": "STILL GOT A QUESTION?",
+        "footer_content": "<p>Contact us or email us at <a href=\"mailto:hi@rood.skin\" title=\"mailto:hi@rood.skin\">hi@rood.skin</a></p>"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "faq_full_width_ykWzYW"
+  ]
+}

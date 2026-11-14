@@ -1,0 +1,121 @@
+<div class="faq-full-width__wrapper">
+  <div class="row g-0">
+      {%- if section.settings.image -%}
+          <div class="col-md-5">
+              <div class="faq-full-width__image">
+                  {%- assign image = section.settings.image -%}
+                  {{ image | image_url: width: image.width | image_tag: class: 'img-fluid', loading: 'lazy' }}
+              </div>
+          </div>
+      {%- endif -%}
+      <div class="col-md-7">
+          <div class="faq-full-width__content">
+              {%- if section.settings.subtitle -%}
+                <p class="faq-full-width__subtitle">{{ section.settings.subtitle }}</p>
+              {%- endif -%}
+              {%- if section.settings.title -%}
+                  <h2 class="faq-full-width__title">{{ section.settings.title }}</h2>
+              {%- endif -%}
+
+              <div class="faq__blocks">
+                  <div class="accordion faq__accordion" id="faqAccordion">
+                      {%- for block in section.blocks -%}
+                          <div class="faq__item accordion-item">
+                              <div class="accordion-header">
+                                  <button class="accordion-button {% if forloop.index != 1 %}collapsed{% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ forloop.index }}" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="collapse-{{ forloop.index }}">
+                                      {{ block.settings.question }}
+                                  </button>
+                              </div>
+                              <div id="collapse-{{ forloop.index }}" class="accordion-collapse collapse {% if forloop.first %}show{% endif %}" data-bs-parent="#faqAccordion">
+                                  <div class="accordion-body">
+                                      {{ block.settings.answer }}
+                                  </div>
+                              </div>
+                          </div>
+                      {%- endfor -%}
+                  </div>
+              </div>
+
+              <div class="faq-full-width__footer">
+                {%- if section.settings.footer_title -%}
+                  <p class="faq-full-width__footer-title">{{ section.settings.footer_title }}</p>
+                {%- endif -%}
+                {%- if section.settings.footer_content -%}
+                  <div class="faq-full-width__footer-content">
+                    {{ section.settings.footer_content }}
+                  </div>
+                {%- endif -%}
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+  "name": "FAQs Full Width",
+  "class": "faq-full-width",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "FREQUENTLY ASKED QUESTIONS"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "For the curious (or confused)"
+    },
+    {
+      "type": "text",
+      "id": "footer_title",
+      "label": "Footer Title",
+      "default": "STILL GOT A QUESTION?"
+    },    
+    {
+      "type": "richtext",
+      "id": "footer_content",
+      "label": "Footer Content"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "FAQ",
+      "type": "faq",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "WHAT EVEN IS ROOD?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQs Full Width"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

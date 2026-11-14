@@ -1,0 +1,222 @@
+ @font-face {
+    font-family: 'Maison Mono';
+    src: url('https://cdn.shopify.com/s/files/1/0659/7151/9694/files/MaisonMono-Regular.eot?v=1764566240');
+    src: url('https://cdn.shopify.com/s/files/1/0659/7151/9694/files/MaisonMono-Regular.eot?v=1764566240') format('embedded-opentype'),
+        url('https://cdn.shopify.com/s/files/1/0659/7151/9694/files/MaisonMono-Regular.woff2?v=1764566240') format('woff2'),
+        url('https://cdn.shopify.com/s/files/1/0659/7151/9694/files/MaisonMono-Regular.woff?v=1764564229') format('woff'),
+        url('https://cdn.shopify.com/s/files/1/0659/7151/9694/files/MaisonMono-Regular.ttf?v=1764566240') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+
+:root {
+    --section-spacing: 100px;
+    --font-hd--family: 'Maison Mono' !important;
+    --normal-page-width: 1370px !important;
+    --font-h1--family: 'Maison Mono' !important;
+    --font-h1--weight: normal !important;
+    --font-h2--family: 'Maison Mono' !important;
+    --font-h2--weight: normal !important;
+    --font-h3--family: 'Maison Mono' !important;
+    --font-h3--weight: normal !important;
+    --font-h4--weight: normal !important;
+    --py: #000;
+    --sy: #EBC421;
+    --it: #fff;
+    --bg: #F4F0ED;
+    --border-radius: 30px;
+}
+
+
+
+@font-face {
+    font-family: 'Maison Mono';
+    src: url('https://cdn.shopify.com/s/files/1/0659/7151/9694/files/MaisonMono-Regular.eot?v=1764566240');
+    src: url('https://cdn.shopify.com/s/files/1/0659/7151/9694/files/MaisonMono-Regular.eot?v=1764566240') format('embedded-opentype'),
+        url('https://cdn.shopify.com/s/files/1/0659/7151/9694/files/MaisonMono-Regular.woff2?v=1764566240') format('woff2'),
+        url('https://cdn.shopify.com/s/files/1/0659/7151/9694/files/MaisonMono-Regular.woff?v=1764564229') format('woff'),
+        url('https://cdn.shopify.com/s/files/1/0659/7151/9694/files/MaisonMono-Regular.ttf?v=1764566240') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter 18pt';
+    src: url('Inter18pt-Regular.eot');
+    src: url('Inter18pt-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Inter18pt-Regular.woff2') format('woff2'),
+        url('Inter18pt-Regular.woff') format('woff'),
+        url('Inter18pt-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter 18pt';
+    src: url('https://cdn.shopify.com/s/files/1/0659/7151/9694/files/Inter18pt-Medium.eot?v=1764230168');
+    src: url('https://cdn.shopify.com/s/files/1/0659/7151/9694/files/Inter18pt-Medium.eot?v=1764230168') format('embedded-opentype'),
+        url('https://cdn.shopify.com/s/files/1/0659/7151/9694/files/Inter18pt-Medium.woff2?v=1764230167') format('woff2'),
+        url('https://cdn.shopify.com/s/files/1/0659/7151/9694/files/Inter18pt-Medium.woff?v=1764230167') format('woff'),
+        url('https://cdn.shopify.com/s/files/1/0659/7151/9694/files/Inter18pt-Medium.ttf?v=1764230168') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+.join-the-text p,.roodtm-text p {
+    font-size: 15px;
+}
+.roodtm-text p {
+    max-width: 560px;
+    line-height: 20px;
+    font-size: 15px;
+}
+.needsclick.kl-private-reset-css-Xuajs1 input {
+    padding-left: 20px !important;
+    height:43px!important;
+}
+.needsclick.kl-private-reset-css-Xuajs1[data-testid=form-component] button.needsclick.go3265039304.kl-private-reset-css-Xuajs1:hover:after,
+button.needsclick.go300628013.kl-private-reset-css-Xuajs1:hover:after {
+    filter: invert(1);
+}
+.cant-be-text p {
+    font-size: 30px;
+    font-family: Maison Mono;
+    padding-top: 14px;
+}
+.needsclick.kl-private-reset-css-Xuajs1[data-testid=form-component] button.needsclick.go3265039304.kl-private-reset-css-Xuajs1:after,
+button.needsclick.go300628013.kl-private-reset-css-Xuajs1:after {
+    position: absolute;
+    content: "";
+    background: url(https://cdn.shopify.com/s/files/1/0659/7151/9694/files/Vector_29.svg?v=1764565713);
+    width: 15px;
+    height: 17px;
+        right: 16px;
+    top: 9px;
+    background-size: 100%;
+    transition: all 
+ease-in-out 0.5s;
+}
+.needsclick.kl-private-reset-css-Xuajs1[data-testid="form-component"] button.needsclick.go3265039304.kl-private-reset-css-Xuajs1 {
+    position: relative;
+    padding-top: 3px !important;
+    padding-right: 45px !important;
+    padding-left: 13px !important;
+    transition: all 
+ease-in-out 0.5s;
+}
+.needsclick.kl-private-reset-css-Xuajs1 input:focus-visible {
+    outline: none !important;
+}
+.needsclick.kl-private-reset-css-Xuajs1[data-testid=form-component] button.needsclick.go3265039304.kl-private-reset-css-Xuajs1 {
+    font-weight: 500 !important;
+    font-family: 'Inter 18pt' !important;
+    padding-top: 0px !important;
+    border: 1px solid #000 !important;
+}
+/* General fade for all elements */
+/* Default: all hero elements hidden + lowered */
+.hero__container * {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+button.needsclick.go300628013.kl-private-reset-css-Xuajs1 {
+    font-weight: 500 !important;
+    font-family: "Inter 18pt" !important;
+    transition: all ease-in-out 0.5s;
+    border: 1px solid #000 !important;
+    position:relative!important;
+    padding-right: 45px !important;
+}
+button.needsclick.go300628013.kl-private-reset-css-Xuajs1:hover{
+background-color: #303B43 !important;
+    color: rgba(255, 255, 255, 1) !important;
+}
+/* When JS adds this class → smooth fade + slide up */
+.hero__container *.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width:767px){
+    .cant-be-text p {
+    font-size: 20px;
+}
+.needsclick.kl-private-reset-css-Xuajs1 {
+        padding-left: 0 !important;
+        margin: 6px 0px !important;
+    }
+    .hero__content-wrapper.layout-panel-flex.layout-panel-flex--column.mobile-column.section-content-wrapper.page-width {
+    max-width: 276px;
+    margin: 0 auto;
+}
+.join-the-text p {
+    font-size: 12px;
+    max-width: 176px;
+    line-height: 16px;
+}
+.roodtm-text p {
+    font-size: 12px;
+}
+.rte.roodtm-text {
+        position: relative;
+        top: 7%;
+    }
+    .logo-block.spacing-style {
+    width: 283px;
+}
+    .needsclick.kl-private-reset-css-Xuajs1 {
+        flex-wrap: wrap !important;
+        display: unset !important;
+        max-width: 250px !important;
+    }
+    .needsclick.klaviyo-sr-only.kl-private-reset-css-Xuajs1 {
+    font-size: 15px !important;
+}
+    .cant-be-text p {
+        line-height: 25px;
+    }
+     .needsclick.kl-private-reset-css-Xuajs1 input {
+        padding-left: 15px !important;
+        height: 33px !important;
+        font-size: 15px !important;
+        width: 265px !important;
+    }
+    .klaviyo-form input::placeholder,
+  .kl-private-reset-css-Xuajs1 input::placeholder {
+    font-size: 15px !important;
+  }
+  .needsclick.kl-private-reset-css-Xuajs1 input {
+    padding-top: 5px !important;
+}
+}
+@media (min-width:1200px){
+.rte.roodtm-text {
+        position: absolute;
+        top: auto;
+        bottom: 0px;
+    }
+    .logo-block.spacing-style {
+    min-width: 585px;
+    max-width: 585px;
+}
+.needsclick.kl-private-reset-css-Xuajs1 input {
+    padding-top: 4px !important;
+}
+}
+@media (min-width:1600px){
+.rte.roodtm-text {
+        position: absolute;
+        top: auto;
+        bottom: 0px;
+    }
+    .logo-block.spacing-style {
+    min-width: 585px;
+    max-width: 585px;
+}
+}
